@@ -1,11 +1,14 @@
 package com.biss.controller;
 
+import static org.springframework.web.bind.annotation.RequestMethod.POST;
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 import com.biss.model.ShipmentType;
 import com.biss.service.IShipmentTypeService;
@@ -27,5 +30,11 @@ public class ShipmentTypeController {
 		String msg="ShipmentType of id "+id+" Saved";
 		model.addAttribute("msg",msg);
 		return"ShipmentRegPage";
+	}
+	@RequestMapping("/all")
+	public String getShipmentData(Model model) {
+		List<ShipmentType> list=ser.getAllShipmentType();
+		model.addAttribute("list", list);
+		return "ShipmentTypeData";
 	}
 }
