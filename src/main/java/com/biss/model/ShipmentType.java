@@ -24,6 +24,11 @@ public class ShipmentType {
 	@Column(name="sdesc")
 	private String shipDesc;
 	
+	public ShipmentType(Integer shipId) {
+		super();
+		this.shipId = shipId;
+	}
+
 	public ShipmentType() {
 		super();
 	}

@@ -19,6 +19,7 @@
 	 				<th>ENABLE</th>
 	 				<th>GRADE</th>
 	 				<th>DESCRPTION</th>
+	 				<th>OPERATION</th>
 	 			</tr>
 	 		</thead>
 	 		<tbody>
@@ -30,6 +31,8 @@
 	 					<td>${ob.enbShip}</td>
 	 					<td>${ob.shipGrad}</td>
 	 					<td>${ob.shipDesc}</td>
+	 					<td><a href="delete?sid=${ob.shipId}"><button>DELETE
+	 							</button></a></td>
 	 				</tr>
 	 				</c:forEach>		
 	 		</tbody>

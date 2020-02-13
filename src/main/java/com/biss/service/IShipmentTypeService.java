@@ -8,4 +8,5 @@ public interface IShipmentTypeService {
 	
 	Integer saveShipmentType(ShipmentType ob);
 	List<ShipmentType> getAllShipmentType();
+	void deleteShipmentType(Integer id);
 }

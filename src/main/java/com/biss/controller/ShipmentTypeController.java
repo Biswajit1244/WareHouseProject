@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.biss.model.ShipmentType;
 import com.biss.service.IShipmentTypeService;
@@ -33,6 +34,21 @@ public class ShipmentTypeController {
 	}
 	@RequestMapping("/all")
 	public String getShipmentData(Model model) {
+		List<ShipmentType> list=ser.getAllShipmentType();
+		model.addAttribute("list", list);
+		return "ShipmentTypeData";
+	}
+	/***
+	 * This method delete the shipment based on shipId
+	 * comming by url Rewritting
+	 */
+	@RequestMapping("/delete")
+	public String deleteShipment(@RequestParam("sid")Integer id,
+									Model model) {
+		ser.deleteShipmentType(id);
+		String msg="Shipment "+id+" Deleted";
+		model.addAttribute("msg",msg);
+		
 		List<ShipmentType> list=ser.getAllShipmentType();
 		model.addAttribute("list", list);
 		return "ShipmentTypeData";

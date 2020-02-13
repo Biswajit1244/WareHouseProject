@@ -10,7 +10,7 @@ import com.biss.dao.IShipmentTypeDao;
 import com.biss.model.ShipmentType;
 @Repository
 public class ShipmentTypeDaoImpl implements IShipmentTypeDao {
-	
+
 	@Autowired
 	private HibernateTemplate ht;
 	@Override
@@ -21,5 +21,8 @@ public class ShipmentTypeDaoImpl implements IShipmentTypeDao {
 	public List<ShipmentType> getAllShipmentType() {
 		return ht.loadAll(ShipmentType.class);
 	}
-
+	@Override
+	public void deleteShipmentType(Integer id) {
+		ht.delete(new ShipmentType(id));
+	}
 }

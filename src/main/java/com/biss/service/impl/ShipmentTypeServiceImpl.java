@@ -29,5 +29,8 @@ public class ShipmentTypeServiceImpl implements IShipmentTypeService {
 		Collections.sort(list, (o1,o2)-> o1.getShipId()-o2.getShipId());
 		return list;
 	}
-
+	@Transactional
+	public void deleteShipmentType(Integer id) {
+		dao.deleteShipmentType(id);
+	}
 }
