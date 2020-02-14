@@ -47,7 +47,8 @@ public class AppConfig {
 		LocalSessionFactoryBean s=new LocalSessionFactoryBean();
 		s.setDataSource(ds());
 		s.setHibernateProperties(props());
-		s.setAnnotatedClasses(ShipmentType.class);
+		//s.setAnnotatedClasses(ShipmentType.class);
+		s.setPackagesToScan("com.biss.model");
 		return s;
 	}
 	@Bean
