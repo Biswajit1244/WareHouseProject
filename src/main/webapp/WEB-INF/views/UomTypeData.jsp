@@ -11,7 +11,7 @@
 	<h2>UOM DATA</h2>
 	<c:choose>
 		<c:when test="${!empty list}">
-		<table border="1">
+		<table border="1" >
 			<thead>
 				<tr>
 					<th>ID</th>
