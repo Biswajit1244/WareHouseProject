@@ -25,4 +25,12 @@ public class ShipmentTypeDaoImpl implements IShipmentTypeDao {
 	public void deleteShipmentType(Integer id) {
 		ht.delete(new ShipmentType(id));
 	}
+	@Override
+	public ShipmentType getOneShipment(Integer id) {
+		return ht.get(ShipmentType.class, id);
+	}
+	@Override
+	public void updateShipmentType(ShipmentType sp) {
+		ht.update(sp);
+	}
 }

@@ -18,18 +18,20 @@
 					<th>TYPE</th>
 					<th>MODEL</th>
 					<th>DECRIPTION</th>
-					<th>OPERATION</th>
+					<th colspan="2">OPERATION</th>
 				</tr>
 			</thead>
 			<tbody>
 			<c:forEach items="${list}" var="ob">
 				<tr>
 					<td>${ob.uomId}</td>
-					<td>${ob.uomType}</td>
+					<td>${ob.uomTp}</td>
 					<td>${ob.uomModel}</td>
 					<td>${ob.uomDesc}</td>
 					<td><a href="delete?uid=${ob.uomId}">
 							<button>DELETE</button></a></td>
+					<td><a href="edit?uid=${ob.uomId}">
+							<button>EDIT</button></a></td>
 				</tr>
 			</c:forEach>
 			</tbody>

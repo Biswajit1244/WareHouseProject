@@ -10,4 +10,6 @@ public interface IShipmentTypeDao {
 	List<ShipmentType> getAllShipmentType();
 	void deleteShipmentType(Integer id);
 	
+	ShipmentType getOneShipment(Integer id);
+	void updateShipmentType(ShipmentType sp);
 }

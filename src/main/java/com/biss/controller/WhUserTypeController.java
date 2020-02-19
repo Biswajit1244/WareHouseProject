@@ -21,7 +21,8 @@ public class WhUserTypeController {
 	private IWhUserTypeService ser;
 
 	@RequestMapping("/register")
-	public String registerWhUser() {
+	public String registerWhUser(Model model) {
+		model.addAttribute("whUserType",new WhUserType());
 		return "WhUserRegister";
 	}
 	@RequestMapping(value = "/save",method =POST)
@@ -30,6 +31,7 @@ public class WhUserTypeController {
 		
 		String msg="WhUser "+id+" Saved";
 		m.addAttribute("msg",msg);
+		m.addAttribute("whUserType",new WhUserType());
 		return "WhUserRegister";
 	}
 	

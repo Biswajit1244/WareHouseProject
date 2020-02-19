@@ -19,7 +19,7 @@
 	 				<th>ENABLE</th>
 	 				<th>GRADE</th>
 	 				<th>DESCRPTION</th>
-	 				<th>OPERATION</th>
+	 				<th colspan="3">OPERATION</th>
 	 			</tr>
 	 		</thead>
 	 		<tbody>
@@ -33,10 +33,13 @@
 	 					<td>${ob.shipDesc}</td>
 	 					<td><a href="delete?sid=${ob.shipId}"><button>DELETE
 	 							</button></a></td>
+	 					<td><a href="edit?sid=${ob.shipId}"><button>EDIT</button></a></td>
+	 					<td><a href="view?sid=${ob.shipId}"><button>VIEW</button></a></td>
 	 				</tr>
 	 				</c:forEach>		
 	 		</tbody>
 	 	</table>
+	 	${msg}
 	 </c:when>
 		<c:otherwise>
 			<h4>Data Not found</h4>

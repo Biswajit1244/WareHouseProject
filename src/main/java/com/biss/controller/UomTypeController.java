@@ -21,7 +21,8 @@ public class UomTypeController {
 	private IUomTypeService ser;
 	
 	@RequestMapping("/register")
-	public String regUom() {
+	public String regUom(Model m) {
+		m.addAttribute("uomType", new UomType());
 		return "UomTypeRegPage";
 	}
 	@RequestMapping(value = "/save",method =POST)
@@ -29,6 +30,7 @@ public class UomTypeController {
 		Integer id=ser.saveUomType(uomtype);
 		String msg="Uom Type "+id+" Saved";
 		m.addAttribute("msg",msg);
+		m.addAttribute("uomType", new UomType());
 		return "UomTypeRegPage";
 	}
 	@RequestMapping("/all")

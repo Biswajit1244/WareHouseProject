@@ -9,16 +9,21 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<title>UomType Register Page</title>
+<title>UomType Edit Page</title>
 </head>
 <body>
-	<h2 class="text-success text-center">UOM REGISTER</h2>
+	<h2 class="text-success text-center">UOM EDIT PAGE</h2>
 	<div class="container">
 	  <div class="col-lg-3"></div>
 	  <div class="col-lg-6">
-		<form:form action="save" method="post" modelAttribute="uomType" class="form-group">
+		<form:form action="update" method="post" modelAttribute="uomType" class="form-group">
 			<div class="row">
 			   <div class="col-lg-6">
+			<div class="row">
+				<div class="col-lg-6">
+					<form:input path="uomId" class="form-control" readonly="true"/>
+				</div>
+			</div>   
 				<label>UOM TYPE:</label>
 				<form:select path="uomTp" class="form-control">
 					<form:option value="">--select type--</form:option>
@@ -40,11 +45,10 @@
 					<form:textarea path="uomDesc" class="form-control"/>
 		    	</div>
 		    </div><br>
-		<input type="submit" value="CREATE UOM" class="btn btn-primary">
+		<input type="submit" value="EDIT UOM" class="btn btn-primary">
 		</form:form>	
 	  </div>
 	  <div class="col-lg-3"></div>
 	</div>
-	${msg}
 </body>
 </html>

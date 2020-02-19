@@ -21,7 +21,8 @@ public class ShipmentTypeController {
 	private IShipmentTypeService ser;
 	
 	@RequestMapping("/register")
-	public String showRegister() {
+	public String showRegister(Model m) {
+		m.addAttribute("shipmentType",new ShipmentType());
 		return "ShipmentRegPage";
 	}
 	@RequestMapping(value = "/save", method=POST)
@@ -30,6 +31,7 @@ public class ShipmentTypeController {
 		Integer id=ser.saveShipmentType(shipmentType);
 		String msg="ShipmentType of id "+id+" Saved";
 		model.addAttribute("msg",msg);
+		model.addAttribute("shipmentType",new ShipmentType());
 		return"ShipmentRegPage";
 	}
 	@RequestMapping("/all")
@@ -52,5 +54,30 @@ public class ShipmentTypeController {
 		List<ShipmentType> list=ser.getAllShipmentType();
 		model.addAttribute("list", list);
 		return "ShipmentTypeData";
+	}
+	@RequestMapping("/edit")
+	public String showEditPage(@RequestParam("sid")Integer id,Model m) {
+		ShipmentType s=ser.getOneShipment(id);
+		m.addAttribute("shipmentType", s);
+		return "ShipmentEditPage";
+	}
+	
+	@RequestMapping(value = "/update",method=POST)
+	public String upDateShipMent(@ModelAttribute ShipmentType shipmentType,Model m) {
+		ser.updateShipmentType(shipmentType);
+		String msg="ShipmentType "+shipmentType.getShipId()+" updated";
+		m.addAttribute("msg",msg);
+		
+		List<ShipmentType> list=ser.getAllShipmentType();
+		m.addAttribute("list", list);
+		return "ShipmentTypeData";
+	}
+	//view one ShipMent Details
+	@RequestMapping("/view")
+	public String showOneShipment(@RequestParam("sid")Integer id,Model m)
+	{
+		ShipmentType st=ser.getOneShipment(id);
+		m.addAttribute("ob", st);
+		return "ShipmentTypeView";
 	}
 }

@@ -14,7 +14,7 @@ public class UomType {
 	@Column(name="UOMID")
 	private Integer uomId;
 	@Column(name="UTYPE")
-	private String uomType;
+	private String uomTp;
 	@Column(name="UMODEL")
 	private String uomModel;
 	@Column(name="DESCRIPTION")
@@ -32,11 +32,11 @@ public class UomType {
 	public void setUomId(Integer uomId) {
 		this.uomId = uomId;
 	}
-	public String getUomType() {
-		return uomType;
+	public String getUomTp() {
+		return uomTp;
 	}
-	public void setUomType(String uomType) {
-		this.uomType = uomType;
+	public void setUomTp(String uomType) {
+		this.uomTp = uomType;
 	}
 	public String getUomModel() {
 		return uomModel;
@@ -53,7 +53,7 @@ public class UomType {
 	
 	@Override
 	public String toString() {
-		return "UomType [uomId=" + uomId + ", uomType=" + uomType + ", uomModel=" + uomModel + ", uomDesc=" + uomDesc
+		return "UomType [uomId=" + uomId + ", uomType=" + uomTp + ", uomModel=" + uomModel + ", uomDesc=" + uomDesc
 				+ "]";
 	}
 }

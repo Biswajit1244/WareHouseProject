@@ -33,4 +33,13 @@ public class ShipmentTypeServiceImpl implements IShipmentTypeService {
 	public void deleteShipmentType(Integer id) {
 		dao.deleteShipmentType(id);
 	}
+	@Transactional(readOnly = true)
+	public ShipmentType getOneShipment(Integer id) {
+		return dao.getOneShipment(id);
+	}
+	
+	@Transactional
+	public void updateShipmentType(ShipmentType sp) {
+		dao.updateShipmentType(sp);
+	}
 }

@@ -4,7 +4,7 @@
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <html>
 <head>
-<title>ShipmentType Register</title>
+<title>ShipmentType Edit Page</title>
 <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -12,12 +12,18 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-<h3 class="text-success text-center text-uppercase">Shipment Register</h3>
+<h3 class="text-success text-center">Shipment Update Page</h3>
 <div class="container">
 	<div class="row">
 		<div class="col-lg-3"></div>
 			<div class="col-lg-6">
-				<form:form action="save" method="post" modelAttribute="shipmentType" class="form-group">
+				<form:form action="update" method="post" modelAttribute="shipmentType" class="form-group">
+				<div class="row">
+					<div class="col-lg-6">
+						<lable>Shipment ID:</lable>
+						<form:input path="shipId" calss="form-control" readonly="true"/>
+					</div>
+				</div>
 				<div class="row">
 	 				<div class="col-lg-6">
 	 				<lable>Shipment Mode:</lable>
@@ -41,19 +47,17 @@
 					<label>Enable Shipment:</label>
 					<form:select path="enbShip" class="form-control">
 						<form:option value="">--Select--</form:option>
-						<form:option value="Yes">YES</form:option>
-						<form:option value="No">NO</form:option>
+						<form:option value="YES">YES</form:option>
+						<form:option value="NO">NO</form:option>
 					</form:select>
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-sm-9">
+				<div calss="col-sm-9">
 					<label>Shipment Grade:</label>
-					<span>
 					<form:radiobutton path="shipGrad" value="A" class="input-lg"/><label>A</label>	 
 					<form:radiobutton path="shipGrad" value="B" class="input-lg"/><label>B</label>	 
 					<form:radiobutton path="shipGrad" value="C" class="input-lg"/><label>C</label>
-					</span>
 				</div>
 			</div>
 			<br>
@@ -64,12 +68,11 @@
 				</div>
 			</div>
 			<br>
-		<input type="submit" value="REGISTER SHIPMENT" class="btn btn-primary btn-lg"/>	 
+		<input type="submit" value="UPDATE SHIPMENT" class="btn btn-primary btn-lg"/>	 
 	</form:form>
 	</div>
 	<div class="col-lg-3"></div>
 	</div>
 </div>
-	${msg}
 </body>
 </html>
