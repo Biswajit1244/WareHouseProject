@@ -51,6 +51,7 @@
 			</c:forEach>
 			</tbody>
 			</table>
+			<a href="excel">EXCEL EXPORT</a>
 		</c:when>
 		<c:otherwise><h3>Data Not Found</h3></c:otherwise>
 	</c:choose>

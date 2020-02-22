@@ -10,7 +10,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.biss.excel.OrderMethodExcelView;
+import com.biss.excel.UomTypeExcelView;
+import com.biss.model.OrderMethod;
 import com.biss.model.UomType;
 import com.biss.service.IUomTypeService;
 
@@ -47,7 +51,16 @@ public class UomTypeController {
 		m.addAttribute("list", list);
 		return "UomTypeData";
 	}
-	
+	//Excel Export
+		@RequestMapping("/excel")
+		public ModelAndView showExcel() {
+			ModelAndView mv=new ModelAndView();
+			mv.setView(new UomTypeExcelView());
+			//fething data 
+			List<UomType> list=ser.getAllUomType();
+			mv.addObject("list",list);
+			return mv;
+		}
 	
 	
 	

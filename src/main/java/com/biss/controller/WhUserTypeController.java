@@ -10,7 +10,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.biss.excel.OrderMethodExcelView;
+import com.biss.excel.WhUserTypeExcelView;
+import com.biss.model.OrderMethod;
 import com.biss.model.WhUserType;
 import com.biss.service.IWhUserTypeService;
 
@@ -50,5 +54,15 @@ public class WhUserTypeController {
 		m.addAttribute("list",list);
 		return "WhUserData";
 	}
+	//Excel Export
+		@RequestMapping("/excel")
+		public ModelAndView showExcel() {
+			ModelAndView mv=new ModelAndView();
+			mv.setView(new WhUserTypeExcelView());
+			//fething data 
+			List<WhUserType> list=ser.getAllWhUser();
+			mv.addObject("list",list);
+			return mv;
+		}
 
 }

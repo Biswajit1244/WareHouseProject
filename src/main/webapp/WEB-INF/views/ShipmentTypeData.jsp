@@ -39,6 +39,7 @@
 	 				</c:forEach>		
 	 		</tbody>
 	 	</table>
+	 	<a href="excel">EXCEL EXPORT</a>
 	 	${msg}
 	 </c:when>
 		<c:otherwise>

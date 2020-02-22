@@ -10,7 +10,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.biss.excel.OrderMethodExcelView;
+import com.biss.excel.ShipmentTypeExcelView;
+import com.biss.model.OrderMethod;
 import com.biss.model.ShipmentType;
 import com.biss.service.IShipmentTypeService;
 
@@ -80,4 +84,14 @@ public class ShipmentTypeController {
 		m.addAttribute("ob", st);
 		return "ShipmentTypeView";
 	}
+	//Excel Export
+		@RequestMapping("/excel")
+		public ModelAndView showExcel() {
+			ModelAndView mv=new ModelAndView();
+			mv.setView(new ShipmentTypeExcelView());
+			//fething data 
+			List<ShipmentType> list=ser.getAllShipmentType();
+			mv.addObject("list",list);
+			return mv;
+		}
 }
