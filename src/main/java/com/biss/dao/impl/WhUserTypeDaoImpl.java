@@ -29,5 +29,12 @@ public class WhUserTypeDaoImpl implements IWhUserTypeDao {
 		wh.setUserId(id);
 		ht.delete(wh);
 	}
-
+	@Override
+	public WhUserType getOneWhUserType(Integer id) {
+		return ht.get(WhUserType.class, id);
+	}
+	@Override
+	public void updateWhUserType(WhUserType sp) {
+		ht.update(sp);
+	}
 }

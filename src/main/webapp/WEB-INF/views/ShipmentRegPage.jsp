@@ -20,13 +20,13 @@
 				<form:form action="save" method="post" modelAttribute="shipmentType" class="form-group">
 				<div class="row">
 	 				<div class="col-lg-6">
-	 				<lable>Shipment Mode:</lable>
+	 				<label>Shipment Mode:</label>
 					<form:select path="shipMode" class="form-control">
-						<form:option value="">--Select Type---</form:option>
+						<form:option value="" disabled="true" selected="true" hidden="true">--Select Type---</form:option>
 						<form:option value="Air">Air</form:option>
 						<form:option value="Truck">Truck</form:option>
 						<form:option value="Ship">Ship</form:option>
-						<form:option value="Train">Trian</form:option>
+						<form:option value="Train">Train</form:option>
 					</form:select>
 				 	</div>
 				</div>
@@ -40,7 +40,7 @@
 				<div class="col-lg-6">
 					<label>Enable Shipment:</label>
 					<form:select path="enbShip" class="form-control">
-						<form:option value="">--Select--</form:option>
+						<form:option value="" disabled="true" selected="true" hidden="true">--Select--</form:option>
 						<form:option value="Yes">YES</form:option>
 						<form:option value="No">NO</form:option>
 					</form:select>

@@ -26,7 +26,7 @@
 			</div>   
 				<label>UOM TYPE:</label>
 				<form:select path="uomTp" class="form-control">
-					<form:option value="">--select type--</form:option>
+					<form:option value="" disabled="true" selected="true" hidden="true">--select type--</form:option>
 					<form:option value="PACKING">PACKING</form:option>
 					<form:option value="NO PACKING">NO PACKING</form:option>
 					<form:option value="NA">-NA-</form:option>
@@ -45,7 +45,7 @@
 					<form:textarea path="uomDesc" class="form-control"/>
 		    	</div>
 		    </div><br>
-		<input type="submit" value="EDIT UOM" class="btn btn-primary">
+		<input type="submit" value="UPDATE UOM" class="btn btn-primary">
 		</form:form>	
 	  </div>
 	  <div class="col-lg-3"></div>

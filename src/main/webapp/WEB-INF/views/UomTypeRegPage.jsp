@@ -21,7 +21,7 @@
 			   <div class="col-lg-6">
 				<label>UOM TYPE:</label>
 				<form:select path="uomTp" class="form-control">
-					<form:option value="">--select type--</form:option>
+					<form:option value="" disabled="true" selected="true" hidden="true">--select type--</form:option>
 					<form:option value="PACKING">PACKING</form:option>
 					<form:option value="NO PACKING">NO PACKING</form:option>
 					<form:option value="NA">-NA-</form:option>

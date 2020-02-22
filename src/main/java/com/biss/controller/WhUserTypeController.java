@@ -16,6 +16,7 @@ import com.biss.excel.OrderMethodExcelView;
 import com.biss.excel.WhUserTypeExcelView;
 import com.biss.model.OrderMethod;
 import com.biss.model.WhUserType;
+import com.biss.model.WhUserType;
 import com.biss.service.IWhUserTypeService;
 
 @Controller
@@ -54,6 +55,31 @@ public class WhUserTypeController {
 		m.addAttribute("list",list);
 		return "WhUserData";
 	}
+	//5.show edit page
+		@RequestMapping("/edit")
+		public String showEditPage(@RequestParam("userid")Integer id,Model m) {
+			WhUserType WhUserType=ser.getOneWhUserType(id);
+			m.addAttribute("whUserType",WhUserType);
+			return "WhUserTypeEditPage";
+		}
+		//6.on click update operation
+		@RequestMapping(value="/update" ,method=POST)
+		public String updateWhUserType(@ModelAttribute WhUserType whUserType,Model m) {
+			ser.updateWhUserType(whUserType);
+			String msg="WhUserType "+whUserType.getUserId()+" Updated";
+			m.addAttribute("msg",msg);
+
+			List<WhUserType> list=ser.getAllWhUser();
+			m.addAttribute("list",list);
+			return "WhUserData";
+		}
+		//7.view one Order
+		@RequestMapping("/view")
+		public String showViewPage(@RequestParam("userid")Integer id,Model m) {
+			WhUserType om=ser.getOneWhUserType(id);
+			m.addAttribute("ob",om);
+			return "WhUserTypeView";
+		}
 	//Excel Export
 		@RequestMapping("/excel")
 		public ModelAndView showExcel() {

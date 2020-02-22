@@ -28,7 +28,7 @@
 				 <th>ID TYPE</th>
 				 <th>OTHER ID_Type</th>
 				 <th>ID NUMBER</th>
-				 <th colspan="2">OPERATION</th>
+				 <th colspan="3">OPERATION</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -43,10 +43,12 @@
 					<td>${ob.whUserIdType }</td>
 					<td>${ob.whUserIdOther }</td>
 					<td>${ob.whUserIdNum }</td>
-					<td><a href="delete?userid=${ob.userId}">
-							<button class="btn btn-danger">DELETE</button></a></td>
-					<td><a href="edit?userid=${ob.userId}">
-							<button class="btn btn-info">EDIT</button></a></td>
+					<td colspan="3"><a href="delete?userid=${ob.userId}">
+							<button class="btn btn-danger">DELETE</button></a>
+					 <a href="edit?userid=${ob.userId}">
+							<button class="btn btn-success">EDIT</button></a>
+					 <a href="view?userid=${ob.userId}">
+							<button class="btn btn-info">VIEW</button></a></td>
 				</tr>
 			</c:forEach>
 			</tbody>

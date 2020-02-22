@@ -12,7 +12,7 @@ import com.biss.model.UomType;
 public class UomTypeDaoImpl implements IUomTypeDao {
 	@Autowired
 	private HibernateTemplate ht;
-	
+
 	@Override
 	public Integer saveUomType(UomType ob) {
 		return (Integer) ht.save(ob);
@@ -27,5 +27,11 @@ public class UomTypeDaoImpl implements IUomTypeDao {
 	public void deleteUomType(Integer id) {
 		ht.delete(new UomType(id));
 	}
-
+	@Override
+	public UomType getOneUomType(Integer id) {
+		return ht.get(UomType.class, id);
+	}@Override
+	public void updateUomType(UomType sp) {
+		ht.update(sp);
+	}
 }

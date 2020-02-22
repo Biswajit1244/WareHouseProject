@@ -31,5 +31,12 @@ public class UomTypeServiceImpl implements IUomTypeService {
 	public void deleteUomType(Integer id) {
 		dao.deleteUomType(id);
 	}
-
+	@Transactional(readOnly = true)
+	public UomType getOneUomType(Integer id) {
+		return dao.getOneUomType(id);
+	}
+	@Transactional
+	public void updateUomType(UomType sp) {
+		dao.updateUomType(sp);
+	}
 }

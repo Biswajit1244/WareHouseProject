@@ -18,7 +18,7 @@
 					<th>TYPE</th>
 					<th>MODEL</th>
 					<th>DECRIPTION</th>
-					<th colspan="2">OPERATION</th>
+					<th colspan="3">OPERATION</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -28,10 +28,12 @@
 					<td>${ob.uomTp}</td>
 					<td>${ob.uomModel}</td>
 					<td>${ob.uomDesc}</td>
-					<td><a href="delete?uid=${ob.uomId}">
-							<button>DELETE</button></a></td>
-					<td><a href="edit?uid=${ob.uomId}">
-							<button>EDIT</button></a></td>
+					<td colspan="3"><a href="delete?uid=${ob.uomId}">
+							<button>DELETE</button></a>
+					  <a href="edit?uid=${ob.uomId}">
+							<button>EDIT</button></a>
+					  <a href="view?uid=${ob.uomId}">
+							<button>VIEW</button></a></td>
 				</tr>
 			</c:forEach>
 			</tbody>

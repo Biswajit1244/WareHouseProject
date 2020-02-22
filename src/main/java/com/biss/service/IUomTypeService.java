@@ -8,4 +8,7 @@ public interface IUomTypeService {
 	Integer saveUomType(UomType ob);
 	List<UomType> getAllUomType();
 	void deleteUomType(Integer id);
+	
+	UomType getOneUomType(Integer id);
+	void updateUomType(UomType sp);
 }
