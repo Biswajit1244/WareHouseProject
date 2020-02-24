@@ -34,6 +34,8 @@
 			<th>DECRIPTION</th><td>${ob.decription}</td>
 		</tr>
 	</table>
+	<a href="excel?oid=${ob.orderId}">EXCEL EXPORT</a>&nbsp;|&nbsp;
+	<a href="pdf?oid=${ob.orderId}">PDF EXPORT</a>
 	</div>
 	<div class="col-lg-7"></div>
 </body>

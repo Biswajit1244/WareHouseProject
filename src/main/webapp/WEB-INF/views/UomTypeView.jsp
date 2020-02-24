@@ -28,6 +28,8 @@
 			<th>DECRIPTION</th><td>${ob.uomDesc}</td>
 		</tr>
 	</table>
+	<a href="excel?uid=${ob.uomId}">EXCEL EXPORT</a>&nbsp;|&nbsp;
+	<a href="pdf?uid=${ob.uomId}">PDF EXPORT</a>
 	</div>
 	<div class="col-lg-7"></div>
 </body>

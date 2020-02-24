@@ -2,6 +2,7 @@ package com.biss.controller;
 
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.biss.excel.OrderMethodExcelView;
+import com.biss.excel.OrderMethodPdfView;
 import com.biss.model.OrderMethod;
 import com.biss.service.IOrderMethodService;
 @Controller
@@ -82,12 +84,34 @@ public class OrderMethodController {
 	}
 	//Excel Export
 	@RequestMapping("/excel")
-	public ModelAndView showExcel() {
+	public ModelAndView showExcel(@RequestParam(value="oid",required = false)Integer id) {
 		ModelAndView mv=new ModelAndView();
 		mv.setView(new OrderMethodExcelView());
-		//fething data 
+		if(id==null) {
+		//fething all data 
 		List<OrderMethod> list=ser.getAllOrderMethod();
 		mv.addObject("list",list);
+		}else {
+			//fetch one data
+		OrderMethod	om=ser.getOneOrderMethod(id);
+		mv.addObject("list",Arrays.asList(om));
+		}
+		return mv;
+	}
+	//Pdf Export
+	@RequestMapping("/pdf")
+	public ModelAndView showPDf(@RequestParam(value="oid",required = false)Integer id) {
+		ModelAndView mv=new ModelAndView();
+		mv.setView(new OrderMethodPdfView());
+		if(id==null) {
+		//fething all data 
+		List<OrderMethod> list=ser.getAllOrderMethod();
+		mv.addObject("list",list);
+		}else {
+			//fetch one data
+		OrderMethod	om=ser.getOneOrderMethod(id);
+		mv.addObject("list",Arrays.asList(om));
+		}
 		return mv;
 	}
 }

@@ -15,7 +15,7 @@
 	<h3 class="text-success text-center">Order Method Registration</h3>
 	<div class="container">
 		<div class="row">
-			<div class="col-lg-4"></div>
+			<div class="col-lg-3"></div>
 			<div class="col-lg-6">
 			 <form:form action="save" method="POST" modelAttribute="orderMethod">
 				<div class="row">

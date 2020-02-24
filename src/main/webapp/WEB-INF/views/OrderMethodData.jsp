@@ -9,13 +9,26 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style type="text/css">
+		th,td
+		{
+			padding: 15px;
+			text-align: center;
+		}
+		th
+		{
+			background-color: #a70907;
+			color: white;
+			font-size: 12pt;
+		}
+</style>
 <title>Order Method Data</title>
 </head>
 <body>
 	<h2 class="text-success bg-info">Order Method Data Page:-</h2><br>
 	<c:choose>
 		<c:when test="${!empty list}">
-			<div class="col-lg-1"></div>
+			<div class="col-lg-2"></div>
 			<div class="col-lg-8">
 			  <div class="row">
 			     <table class="table table-striped table-hover">
@@ -49,13 +62,14 @@
 			   </table>
 			  </div>	
 			  <div class="row">
-			  	<a href="excel">Export Excel</a>
+			  	<a href="excel">Export Excel</a>&nbsp;|&nbsp;
+			  	<a href="pdf">Export PDF</a>
 		      </div>
 		      <div class="row">
-			   <span class="text-danger text-center">${msg}</span>
+			   <span class="text-danger">${msg}</span>
 		      </div>
 			</div>
-			<div class="col-lg-3"></div>
+			<div class="col-lg-2"></div>
 		</c:when>
 		<c:otherwise>Data Not Found..!!</c:otherwise>
 	</c:choose>

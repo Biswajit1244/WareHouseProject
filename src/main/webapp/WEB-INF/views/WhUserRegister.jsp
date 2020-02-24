@@ -12,39 +12,116 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style type="text/css">
+  	*{
+  		margin: 0px;
+  		padding: 0px;
+  	}
+  	.control-label{
+  		font-size: 15px;
+  		margin-top: 20px;
+  		font-weight: normal;
+  	}
+  	.form-control{
+  		
+  		margin-top:20px;
+  		border: 5px;
+  		border-radius: 10px;
+  		border-bottom: 2px solid gray;
+  		font-size: 15px;
+  		color: green;
+  	}
+  	.col-lg-6{
+  		background: rgba(0,0,0,0.4);
+  		height: 550px;
+  		box-shadow: -1px 1px 60px 10px black inset;
+  	}
+  </style>
 </head>
 <body>
-	<H3 class="txt">WAREHOUSE USER REGISTER</H3>
-	<div class="form-group">
-	<fieldset>
-		<legend><b>WareHouse User</b></legend>
+<div class="container">
+	<H3 class="txt text-center">WAREHOUSE USER REGISTER</H3>
+	  <div class="col-lg-3"></div>
+	  <div class="col-lg-6">
 		<form:form action="save" method="post" class="from-group" modelAttribute="whUserType">
-		  USER TYPE:<form:radiobutton path="whUserType" value="vendor"/>Vendor
-		  			<form:radiobutton path="whUserType" value="customer"/>Customer
-
+				<div class="row">
+					<div class="col-lg-3">
+						<label class="control-label"> USER TYPE</label>
+					</div>
+					<div class="col-lg-7">
+						<form:radiobutton path="whUserType" value="vendor" />
+						Vendor
+						<form:radiobutton path="whUserType" value="customer" />
+						Customer
+					</div>
+				</div>
+			<div class="row">
+					<div class="col-lg-3">
+						<label class="control-label">USER CODE:</label>
+					</div>
+					<div class="col-lg-7">
+						<form:input path="whUserCode" class="form-control"/>
+					</div>
+				</div>
 		  		    
-		  USER CODE:<form:input path="whUserCode" class="form-control"/>
-		  
-		  USER FOR :<form:input path="whUserFor" class="form-control"/>		    
-		  
-		  USER EMAIL:<form:input path="whUserEmail" class="form-control"/>
-		  
-		  USER CONTACT:<form:input path="whUserCont" class="form-control"/>
-		  
-		  USER ID TYPE:<form:select path="whUserIdType" class="form-control">
+		  <div class="row">
+					<div class="col-lg-3">
+						<label class="control-label">USER FOR</label>
+					</div>
+					<div class="col-lg-7">
+						<form:input path="whUserFor" class="form-control"/>
+					</div>
+				</div>
+		  <div class="row">
+					<div class="col-lg-3">
+						<label class="control-label">USER EMAIL</label>
+					</div>
+					<div class="col-lg-7">
+						<form:input path="whUserEmail" class="form-control"/>
+					</div>
+				</div>
+		  <div class="row">
+					<div class="col-lg-3">
+						<label class="control-label">USER CONTACT</label>
+					</div>
+					<div class="col-lg-7">
+						<form:input path="whUserCont" class="form-control"/>
+					</div>
+				</div>
+		  <div class="row">
+					<div class="col-lg-3">
+						<label class="control-label"> USER ID TYPE</label>
+					</div>
+					<div class="col-lg-5">
+						<form:select path="whUserIdType" class="form-control">
 		  			<form:option value="" disabled="true" selected="true" hidden="true">--choose--</form:option>  
 		  			<form:option value="PANCARD">PANCARD</form:option>
 		  			<form:option value="AADHAR CARD">AADHAR CARD</form:option>
 		  			<form:option value="VOTER ID">VOTER ID</form:option>
 		  			<form:option value="Other">Other</form:option>
 		  			</form:select>
-		  			
-		  IF OTHER TYPE:<form:input path="whUserIdOther" class="form-control"/>
-		  ID NUMBER:<form:input path="whUserIdNum" class="form-control"/>
-		  
-		  <input type="submit" value="CREATE USER" class="from-control" class="btn btn-primary">			
+					</div>
+				</div>
+		 <div class="row">
+					<div class="col-lg-3">
+						<label class="control-label">IF OTHER TYPE</label>
+					</div>
+					<div class="col-lg-7">
+						<form:input path="whUserIdOther" class="form-control"/>
+					</div>
+				</div>
+		 <div class="row">
+					<div class="col-lg-3">
+						<label class="control-label">ID NUMBER</label>
+					</div>
+					<div class="col-lg-7">
+						<form:input path="whUserIdNum" class="form-control"/>
+					</div>
+				</div>
+		  <input type="submit" value="CREATE USER" class="btn btn-primary">			
 		</form:form>
-	</fieldset>
-	</div>
+	  </div>
+	  <div class="col-lg-3"></div>
+</div>
 </body>
 </html>

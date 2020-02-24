@@ -21,7 +21,7 @@
 				<div class="row">
 					<div class="col-lg-6">
 						<label>Shipment ID:</label>
-						<form:input path="shipId" calss="form-control" readonly="true"/>
+						<form:input path="shipId" class="form-control" readonly="true"/>
 					</div>
 				</div>
 				<div class="row">
@@ -53,7 +53,7 @@
 				</div>
 			</div>
 			<div class="row">
-				<div calss="col-sm-9">
+				<div class="col-sm-9">
 					<label>Shipment Grade:</label>
 					<form:radiobutton path="shipGrad" value="A" class="input-lg"/><label>A</label>	 
 					<form:radiobutton path="shipGrad" value="B" class="input-lg"/><label>B</label>	 

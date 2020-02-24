@@ -2,6 +2,7 @@ package com.biss.controller;
 
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,10 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.biss.excel.OrderMethodExcelView;
 import com.biss.excel.WhUserTypeExcelView;
-import com.biss.model.OrderMethod;
-import com.biss.model.WhUserType;
+import com.biss.excel.WhUserTypePdfView;
 import com.biss.model.WhUserType;
 import com.biss.service.IWhUserTypeService;
 
@@ -50,7 +49,8 @@ public class WhUserTypeController {
 	@RequestMapping("/delete")
 	public String deleteWhUser(@RequestParam("userid")Integer id,Model m) {
 		ser.deleteWhUser(id);
-		
+		String msg="WhUser "+id+" deleted";
+		m.addAttribute("msg",msg);
 		List<WhUserType> list=ser.getAllWhUser();
 		m.addAttribute("list",list);
 		return "WhUserData";
@@ -82,12 +82,32 @@ public class WhUserTypeController {
 		}
 	//Excel Export
 		@RequestMapping("/excel")
-		public ModelAndView showExcel() {
+		public ModelAndView showExcel(@RequestParam(value="userid",required = false)Integer id) {
 			ModelAndView mv=new ModelAndView();
 			mv.setView(new WhUserTypeExcelView());
+			if(id==null) {
 			//fething data 
 			List<WhUserType> list=ser.getAllWhUser();
 			mv.addObject("list",list);
+			}else {
+				WhUserType wt=ser.getOneWhUserType(id);
+				mv.addObject("list",Arrays.asList(wt));
+			}
+			return mv;
+		}
+		//Pdf Export
+		@RequestMapping("/pdf")
+		public ModelAndView showPdf(@RequestParam(value="userid",required = false)Integer id) {
+			ModelAndView mv=new ModelAndView();
+			mv.setView(new WhUserTypePdfView());
+			if(id==null) {
+			//fething data 
+			List<WhUserType> list=ser.getAllWhUser();
+			mv.addObject("list",list);
+			}else {
+				WhUserType wt=ser.getOneWhUserType(id);
+				mv.addObject("list",Arrays.asList(wt));
+			}
 			return mv;
 		}
 

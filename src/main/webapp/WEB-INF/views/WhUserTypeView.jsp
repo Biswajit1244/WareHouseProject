@@ -43,6 +43,8 @@
 			<th>ID NUMBER</th><td>${ob.whUserIdNum}</td>
 		</tr>
 	</table>
+	<a href="excel?userid=${ob.userId}">EXCEL EXPORT</a>&nbsp;|&nbsp;
+	<a href="pdf?userid=${ob.userId}">PDF EXPORT</a>
 	</div>
 	<div class="col-lg-7"></div>
 </body>
