@@ -18,6 +18,7 @@ public class DocumentDaoImpl implements IDocumentDao{
 	public Integer saveDocument(Document doc) {
 		return (Integer) ht.save(doc);
 	}
+	@SuppressWarnings({ "unchecked", "deprecation" })
 	@Override
 	public List<Object[]> getFileIdAndName() {
 		String hql="select fileId,fileName from com.biss.model.Document";
