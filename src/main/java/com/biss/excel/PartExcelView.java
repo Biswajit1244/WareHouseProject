@@ -11,21 +11,21 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.springframework.web.servlet.view.document.AbstractXlsxView;
 
-import com.biss.model.OrderMethod;
+import com.biss.model.Part;
 
-public class OrderMethodExcelView extends AbstractXlsxView {
+public class PartExcelView extends AbstractXlsxView {
 
 	@Override
 	protected void buildExcelDocument(Map<String, Object> model, Workbook workbook, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		//change file name
-		response.addHeader("Content-Disposition", "attachment;filename=OrderMethod.xlsx");
-		Sheet s=workbook.createSheet("OrderMethod");
+		response.addHeader("Content-Disposition", "attachment;filename=Part.xlsx");
+		Sheet s=workbook.createSheet("Part");
 		//construct row(0)
 		setHead(s);
 		//read model Data
 		@SuppressWarnings("unchecked")
-		List<OrderMethod> list=(List<OrderMethod>) model.get("list");
+		List<Part> list=(List<Part>) model.get("list");
 		setBody(list,s);
 	}
 
@@ -33,23 +33,23 @@ public class OrderMethodExcelView extends AbstractXlsxView {
 	private void setHead(Sheet s) {
 		Row r=s.createRow(0);
 		r.createCell(0).setCellValue("ID");
-		r.createCell(1).setCellValue("MODE");
-		r.createCell(2).setCellValue("CODE");
-		r.createCell(3).setCellValue("TYPE");
-		r.createCell(4).setCellValue("ACCEPT");
+		r.createCell(1).setCellValue("WIDTH");
+		r.createCell(2).setCellValue("LENGTH");
+		r.createCell(3).setCellValue("HEIGHT");
+		r.createCell(4).setCellValue("CURRENCY");
 		r.createCell(5).setCellValue("DESCRIPTION");
 	}
-	private void setBody(List<OrderMethod> list, Sheet s) {
+	private void setBody(List<Part> list, Sheet s) {
 		int count=1;
-		for(OrderMethod om:list) {
+		for(Part om:list) {
 			Row r=s.createRow(count++);
-			r.createCell(0).setCellValue(om.getOrderId());
-			r.createCell(1).setCellValue(om.getOrderMode());
-			r.createCell(2).setCellValue(om.getOrderCode());
-			r.createCell(3).setCellValue(om.getOrderType());
-			r.createCell(4).setCellValue(om.getOrderAcpt().toString());
-			r.createCell(5).setCellValue(om.getDecription());
+			r.createCell(0).setCellValue(om.getPartId());
+			r.createCell(1).setCellValue(om.getPartWidth());
+			r.createCell(2).setCellValue(om.getPartLength());
+			r.createCell(3).setCellValue(om.getPartHeight());
+			r.createCell(4).setCellValue(om.getPartCurrency());
+			r.createCell(5).setCellValue(om.getPartDesc());
 		}
 	}
-
 }
+

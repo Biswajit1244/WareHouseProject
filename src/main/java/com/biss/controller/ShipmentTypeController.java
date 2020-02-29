@@ -5,6 +5,8 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.servlet.ServletContext;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,12 +19,17 @@ import com.biss.excel.ShipmentTypeExcelView;
 import com.biss.excel.ShipmentTypePdfView;
 import com.biss.model.ShipmentType;
 import com.biss.service.IShipmentTypeService;
+import com.biss.utils.ShipmentTypeUtil;
 
 @Controller
 @RequestMapping("/shipment")
 public class ShipmentTypeController {
 	@Autowired
 	private IShipmentTypeService ser;
+	@Autowired
+	private ServletContext context;
+	@Autowired
+	private ShipmentTypeUtil util;
 
 	@RequestMapping("/register")
 	public String showRegister(Model m) {
@@ -113,5 +120,14 @@ public class ShipmentTypeController {
 			mv.addObject("list",Arrays.asList(st));
 		}
 		return mv;
+	}
+	//Show pie chart
+	@RequestMapping("/charts")
+	public String showCharts() {
+		List<Object[]> list=ser.getShipmentModeCount();
+		String path=context.getRealPath("/");
+		util.generatePie(path, list);
+		util.generateBar(path, list);
+		return "ShipmentTypeCharts";
 	}
 }

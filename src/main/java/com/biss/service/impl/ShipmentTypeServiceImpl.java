@@ -1,6 +1,5 @@
 package com.biss.service.impl;
 
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
@@ -41,5 +40,9 @@ public class ShipmentTypeServiceImpl implements IShipmentTypeService {
 	@Transactional
 	public void updateShipmentType(ShipmentType sp) {
 		dao.updateShipmentType(sp);
+	}
+	@Transactional(readOnly = true)
+	public List<Object[]> getShipmentModeCount() {
+		return dao.getShipmentModeCount();
 	}
 }

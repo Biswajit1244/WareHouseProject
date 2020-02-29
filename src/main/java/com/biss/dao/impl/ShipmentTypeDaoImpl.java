@@ -33,4 +33,12 @@ public class ShipmentTypeDaoImpl implements IShipmentTypeDao {
 	public void updateShipmentType(ShipmentType sp) {
 		ht.update(sp);
 	}
+	@SuppressWarnings({ "unchecked", "deprecation" })
+	@Override
+	public List<Object[]> getShipmentModeCount() {
+		String hql=" select shipMode,count(shipMode) "
+				+ " from com.biss.model.ShipmentType "
+				+ " group by shipMode ";
+		return (List<Object[]>) ht.find(hql);
+	}
 }

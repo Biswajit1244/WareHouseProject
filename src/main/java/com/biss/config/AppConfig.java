@@ -5,7 +5,6 @@ package com.biss.config;
 import javax.sql.DataSource;
 
 import org.apache.commons.dbcp2.BasicDataSource;
-import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -18,9 +17,10 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
-import com.biss.model.ShipmentType;
 @Configuration
 @EnableTransactionManagement //eables HtX
 
@@ -29,7 +29,7 @@ import com.biss.model.ShipmentType;
 @PropertySource("classpath:app.properties")
 //all layered classes common package name
 @ComponentScan("com.biss")
-public class AppConfig {
+public class AppConfig implements WebMvcConfigurer{
 	@Autowired
 	private Environment env;
 	//1. DataSource
@@ -91,5 +91,9 @@ public class AppConfig {
 	@Bean
 	public CommonsMultipartResolver multipartResolver() {
 		return new CommonsMultipartResolver();
+	}
+	//7.Configure resource folder
+	public void addResourceHandlers(ResourceHandlerRegistry reg) {
+		reg.addResourceHandler("/resources/**").addResourceLocations("/resources/");
 	}
 }
