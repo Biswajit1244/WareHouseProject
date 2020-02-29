@@ -39,4 +39,8 @@ public class WhUserTypeServiceImpl implements IWhUserTypeService {
 	public void updateWhUserType(WhUserType sp) {
 		dao.updateWhUserType(sp);
 	}
+	@Transactional(readOnly = true)
+	public List<Object[]> getWhuserIdCount() {
+		return dao.getWhuserIdCount();
+	}
 }

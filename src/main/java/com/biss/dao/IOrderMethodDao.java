@@ -11,4 +11,6 @@ public interface IOrderMethodDao {
 	
 	OrderMethod getOneOrderMethod(Integer id);
 	void updateOrderMethod(OrderMethod sp);
+	
+	List<Object[]> getOrderTypeCount();
 }

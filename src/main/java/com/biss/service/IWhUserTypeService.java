@@ -11,4 +11,6 @@ public interface IWhUserTypeService {
 	
 	WhUserType getOneWhUserType(Integer id);
 	void updateWhUserType(WhUserType sp);
+	
+	List<Object[]> getWhuserIdCount();
 }

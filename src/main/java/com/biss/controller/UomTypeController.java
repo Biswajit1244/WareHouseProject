@@ -5,6 +5,8 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.servlet.ServletContext;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,13 +19,18 @@ import com.biss.excel.UomTypeExcelView;
 import com.biss.excel.UomTypePdfView;
 import com.biss.model.UomType;
 import com.biss.service.IUomTypeService;
+import com.biss.utils.UomTypeUtil;
 
 @Controller
 @RequestMapping("/uom")
 public class UomTypeController {
 	@Autowired
 	private IUomTypeService ser;
-
+	@Autowired
+	private ServletContext context;
+	@Autowired
+	private UomTypeUtil util;
+	
 	@RequestMapping("/register")
 	public String regUom(Model m) {
 		m.addAttribute("uomType", new UomType());
@@ -107,4 +114,13 @@ public class UomTypeController {
 		}
 		return mv;
 	}
+	//Show pie chart
+		@RequestMapping("/charts")
+		public String showCharts() {
+			List<Object[]> list=ser.getUomTypeConunt();
+			String path=context.getRealPath("/");
+			util.generatePie(path, list);
+			util.generateBar(path, list);
+			return "UomTypeCharts";
+		}
 }

@@ -33,4 +33,11 @@
 		public void updateOrderMethod(OrderMethod sp) {
 			ht.update(sp);
 		}
+		
+	 @SuppressWarnings({ "unchecked", "deprecation" })
+	@Override
+	public List<Object[]> getOrderTypeCount() {
+		String hql="select orderType,count(orderType) from com.biss.model.OrderMethod group by orderType";
+		return (List<Object[]>) ht.find(hql);
 	}
+}

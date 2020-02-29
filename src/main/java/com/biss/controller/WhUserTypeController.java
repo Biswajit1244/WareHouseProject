@@ -5,6 +5,8 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.servlet.ServletContext;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,13 +19,19 @@ import com.biss.excel.WhUserTypeExcelView;
 import com.biss.excel.WhUserTypePdfView;
 import com.biss.model.WhUserType;
 import com.biss.service.IWhUserTypeService;
+import com.biss.utils.WhUserTypeUtil;
 
 @Controller
 @RequestMapping("/whuser")
 public class WhUserTypeController {
 	@Autowired
 	private IWhUserTypeService ser;
-
+	@Autowired
+	private ServletContext context;
+	@Autowired
+	private WhUserTypeUtil util;
+	
+	
 	@RequestMapping("/register")
 	public String registerWhUser(Model model) {
 		model.addAttribute("whUserType",new WhUserType());
@@ -110,5 +118,13 @@ public class WhUserTypeController {
 			}
 			return mv;
 		}
-
+		//Show pie chart
+		@RequestMapping("/charts")
+		public String showCharts() {
+			List<Object[]> list=ser.getWhuserIdCount();
+			String path=context.getRealPath("/");
+			util.generatePie(path, list);
+			util.generateBar(path, list);
+			return "WhUserCharts";
+		}
 }

@@ -5,6 +5,8 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.servlet.ServletContext;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,11 +19,16 @@ import com.biss.excel.OrderMethodExcelView;
 import com.biss.excel.OrderMethodPdfView;
 import com.biss.model.OrderMethod;
 import com.biss.service.IOrderMethodService;
+import com.biss.utils.OrderMethodUtil;
 @Controller
 @RequestMapping("/order")
 public class OrderMethodController {
 	@Autowired
 	private IOrderMethodService ser;
+	@Autowired
+	private ServletContext context;
+	@Autowired
+	private OrderMethodUtil util;
 	
 	//1.Show Reg page
 	@RequestMapping("/register")
@@ -114,4 +121,13 @@ public class OrderMethodController {
 		}
 		return mv;
 	}
+	//Show pie chart
+		@RequestMapping("/charts")
+		public String showCharts() {
+			List<Object[]> list=ser.getOrderTypeCount();
+			String path=context.getRealPath("/");
+			util.generatePie(path, list);
+			util.generateBar(path, list);
+			return "OrderMethodCharts";
+		}
 }

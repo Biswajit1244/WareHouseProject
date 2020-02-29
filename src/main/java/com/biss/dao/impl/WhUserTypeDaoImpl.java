@@ -37,4 +37,11 @@ public class WhUserTypeDaoImpl implements IWhUserTypeDao {
 	public void updateWhUserType(WhUserType sp) {
 		ht.update(sp);
 	}
+	@SuppressWarnings({ "unchecked", "deprecation" })
+	@Override
+	public List<Object[]> getWhuserIdCount() {
+		String hql="select whUserIdType,count(whUserIdType) from com.biss.model.WhUserType "
+				+ " group by whUserIdType ";
+		return (List<Object[]>) ht.find(hql);
+	}
 }

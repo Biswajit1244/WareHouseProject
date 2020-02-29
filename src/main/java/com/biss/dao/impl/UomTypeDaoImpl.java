@@ -34,4 +34,10 @@ public class UomTypeDaoImpl implements IUomTypeDao {
 	public void updateUomType(UomType sp) {
 		ht.update(sp);
 	}
+	@SuppressWarnings({ "unchecked", "deprecation" })
+	@Override
+	public List<Object[]> getUomTypeConunt() {
+		String hq="select uomTp,count(uomTp) from com.biss.model.UomType group by uomTp";
+		return (List<Object[]>) ht.find(hq);
+	}
 }
