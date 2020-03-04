@@ -13,6 +13,7 @@ public class ShipmentTypeDaoImpl implements IShipmentTypeDao {
 
 	@Autowired
 	private HibernateTemplate ht;
+	
 	@Override
 	public Integer saveShipmentType(ShipmentType ob) {
 		return (Integer) ht.save(ob);

@@ -7,6 +7,7 @@
 <title>Shipment Charts</title>
 </head>
 <body>
+	<%@include file="UserMenu.jsp" %>
 	<h3>WELCOME TO SHIPMENT CHARTS</h3>
 	<img src="../resources/images/shipmentPie.jpg" />
 	<img src="../resources/images/shipmentBar.jpg" />

@@ -1,75 +1,134 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1" isELIgnored="false"%>
+	pageEncoding="ISO-8859-1" isELIgnored="false"%>
 <!DOCTYPE html>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <html>
 <head>
-<meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<title>Order Method Register</title>
+<title>Order Method Edit</title>
+<style type="text/css">
+.btn-lg {
+	margin-left: 200px;
+}
+
+.card-body {
+	background-color: #adb9cc;
+}
+
+#head, h3 {
+	background-color: #a70907;
+}
+
+.form-control {
+	margin-top: 20px;
+	border: 5px;
+	border-radius: 10px;
+	border-bottom: 2px solid gray;
+	font-size: 15px;
+	color: green;
+}
+
+.control-label {
+	font-size: 15px;
+	margin-top: 20px;
+	font-weight: bold;
+}
+</style>
 </head>
 <body>
-	<h3 class="text-success text-center">Order Method Registration</h3>
+	<%@include file="UserMenu.jsp"%>
 	<div class="container">
-		<div class="row">
-			<div class="col-lg-4"></div>
-			<div class="col-lg-6">
-			 <form:form action="update" method="POST" modelAttribute="orderMethod">
-				<div class="row">
-					<div class="col-lg-6">
-					<label>Order Id</label>
-					<form:input path="orderId" class="form-control"/>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-lg-6">
-					   <label>Order Mode</label>
-						<form:radiobutton path="orderMode" value="Sale" class="input-lg"/>Sale
-						<form:radiobutton path="orderMode" value="Purchase" class="input-lg"/>Purchase
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-lg-6">
-					     <label>Order Code</label>
-						<form:input path="orderCode" class="form-control"/>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-lg-6">
-					     <label>Order Type</label>
-						<form:select path="orderType" class="form-control">
-							<form:option value="" disabled="true" selected="true" hidden="true">
-															--Select Type--</form:option>
-							<form:option value="FIFO">FIFO</form:option>
-							<form:option value="LIFO">LIFO</form:option>
-							<form:option value="FCFO">FCFO</form:option>
-							<form:option value="FEFO">FEFO</form:option>
-						</form:select>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-sm-9">
-					  <label>Order Accept</label>
-					  <form:checkbox path="orderAcpt" value="Multi-Model"/>Multi-Model
-					  <form:checkbox path="orderAcpt" value="Accept Return"/>Accept Return
-					</div>
-				</div>			
-				<div class="row">
-				 <div class="col-lg-6">
-					<label>Description</label>
-					<form:textarea path="decription" class="form-control"/>
-				</div>
-			</div>
-			<br>
-			<input type="submit" value="UPDATE ORDER METHOD" class="btn btn-primary">
-			 </form:form>
-			 </div>
-			<div class="col-lg-3"></div>
+		<div class="card-header" id="head">
+			<h3 class="text-white text-center text-uppercase">Order Method
+				Update</h3>
 		</div>
+		<div class="card-body">
+			<div class="row">
+				<div class="col-2"></div>
+				<div class="col-8">
+					<form:form action="update" method="POST"
+						modelAttribute="orderMethod">
+						<div class="row">
+							<div class="col-3">
+								<label class="control-label">Order Id</label>
+							</div>
+							<div class="col-6">
+								<form:input path="orderId" class="form-control" readonly="true"/>
+							</div>
+							<div class="col-3"></div>
+						</div>
+						<div class="row">
+							<div class="col-3">
+								<label class="control-label">Order Mode</label>
+							</div>
+							<div class="col-6">
+								<form:radiobutton path="orderMode" value="Sale" class="input-lg" />
+								<label class="control-label">Sale</label>
+								<form:radiobutton path="orderMode" value="Purchase"
+									class="input-lg" />
+								<label class="control-label">Purchase</label>
+							</div>
+							<div class="col-3"></div>
+						</div>
+						<div class="row">
+							<div class="col-3">
+								<label class="control-label">Order Code</label>
+							</div>
+							<div class="col-6">
+								<form:input path="orderCode" class="form-control" />
+							</div>
+							<div class="col-3"></div>
+						</div>
+						<div class="row">
+							<div class="col-3">
+								<label class="control-label">Order Type</label>
+							</div>
+							<div class="col-6">
+								<form:select path="orderType" class="form-control">
+									<form:option value="" disabled="true" selected="true"
+										hidden="true">
+															--Select Type--</form:option>
+									<form:option value="FIFO">FIFO</form:option>
+									<form:option value="LIFO">LIFO</form:option>
+									<form:option value="FCFO">FCFO</form:option>
+									<form:option value="FEFO">FEFO</form:option>
+								</form:select>
+							</div>
+							<div class="col-3"></div>
+						</div>
+						<div class="row">
+							<div class="col-3">
+								<label class="control-label">Order Accept</label>
+							</div>
+							<div class="col-6">
+								<form:checkbox path="orderAcpt" value="Multi-Model" />
+								<label class="control-label">Multi-Model</label>
+								<form:checkbox path="orderAcpt" value="Accept Return" />
+								<label class="control-label">Accept Return</label>
+							</div>
+							<div class="col-3"></div>
+						</div>
+						<div class="row">
+							<div class="col-3">
+								<label class="control-label">Description</label>
+							</div>
+							<div class="col-6">
+								<form:textarea path="decription" class="form-control" />
+							</div>
+							<div class="col-3"></div>
+						</div>
+						<br>
+						<input type="submit" value="UPDATE ORDER METHOD"
+							class="btn btn-primary btn-lg">
+					</form:form>
+				</div>
+				<div class="col-2"></div>
+			</div>
+		</div>
+		<c:if test="${!empty msg }">
+			<div class="card-footer bg-info text-white text-center">
+				<b>${msg}</b>
+			</div>
+		</c:if>
 	</div>
-	${msg}
 </body>
 </html>

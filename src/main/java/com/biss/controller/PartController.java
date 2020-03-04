@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +18,7 @@ import com.biss.excel.PartPdfView;
 import com.biss.model.Part;
 import com.biss.service.IPartService;
 
+@Controller
 @RequestMapping("/part")
 public class PartController {
 	@Autowired
@@ -25,7 +27,7 @@ public class PartController {
 	//1.Show Reg page
 		@RequestMapping("/register")
 		public String showRegPage(Model model) {
-			model.addAttribute("Part",new Part());
+			model.addAttribute("part",new Part());
 		return "PartRegPage";
 		}
 		//2.on click save Operation

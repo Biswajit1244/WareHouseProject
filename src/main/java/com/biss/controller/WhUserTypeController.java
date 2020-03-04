@@ -68,7 +68,7 @@ public class WhUserTypeController {
 		public String showEditPage(@RequestParam("userid")Integer id,Model m) {
 			WhUserType WhUserType=ser.getOneWhUserType(id);
 			m.addAttribute("whUserType",WhUserType);
-			return "WhUserTypeEditPage";
+			return "WhUserEditPage";
 		}
 		//6.on click update operation
 		@RequestMapping(value="/update" ,method=POST)

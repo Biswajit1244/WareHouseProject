@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<%@include file="UserMenu.jsp" %>
 	<h3>UPLOAD FILE HERE</h3>
 	<form action="upload" method="POST" enctype="multipart/form-data">
 	<pre>

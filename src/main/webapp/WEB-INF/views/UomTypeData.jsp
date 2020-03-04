@@ -4,14 +4,6 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 	<style type="text/css">
 		th,td
 		{
@@ -24,18 +16,23 @@
 			color: white;
 			font-size: 12pt;
 		}
+		h2{
+			margin-top: 100px;
+	}
 </style>
 <title>Uom Data</title>
 </head>
 <body>
-	<h2 class="text-success bg-info">UOM DATA</h2>
+	<%@include file="UserMenu.jsp"%>
+	<h2 class="text-warning bg-info text-center">UOM DATA</h2>
 	<br>
 	<c:choose>
 		<c:when test="${!empty list}">
+		<div class="row">
 			<div class="col-lg-3"></div>
-			<div class="col-lg-5">
+			<div class="col-lg-6">
 				<div class="row">
-					<table class="table table-striped table-hover">
+					<table class="table table-dark table-hover">
 						<thead class="bg-danger">
 							<tr>
 								<th>ID</th>
@@ -72,7 +69,8 @@
 					<span class="text-danger">${msg}</span>
 				</div>
 			</div>
-			<div class="col-lg-4"></div>
+			<div class="col-lg-3"></div>
+		</div>
 		</c:when>
 		<c:otherwise>
 			<h3>Data Not Found</h3>

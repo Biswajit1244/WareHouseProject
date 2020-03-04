@@ -13,6 +13,7 @@ public class PurchaseDaoImpl implements IPurchaseDao {
 
 	@Autowired
 	private HibernateTemplate ht;
+	
 	@Override
 	public Integer savePurchase(Purchase ob) {
 		return (Integer) ht.save(ob);

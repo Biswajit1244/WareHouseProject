@@ -19,7 +19,7 @@ import com.biss.excel.PurchasePdfView;
 import com.biss.model.Purchase;
 import com.biss.service.IPurchaseService;
 @Controller
-@RequestMapping("purchase")
+@RequestMapping("/purchase")
 public class PuchaseController {
 	@Autowired
 	private IPurchaseService ser;

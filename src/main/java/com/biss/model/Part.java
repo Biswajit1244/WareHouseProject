@@ -16,12 +16,16 @@ public class Part {
 	@GeneratedValue(generator = "partSq")
 	@GenericGenerator(name="partSq",strategy = "increment")
 	private Integer partId;
+	@Column(name="p_code")
+	private String partCode;
 	@Column(name="P_width")
 	private Double partWidth;
 	@Column(name="p_length")
 	private Double partLength;
 	@Column(name="p_height")
 	private Double partHeight;
+	@Column(name="p_bcost")
+	private String partBCost;
 	@Column(name="p_currency")
 	private String partCurrency;
 	@Column(name="p_desc")
@@ -38,6 +42,12 @@ public class Part {
 	}
 	public void setPartId(Integer partId) {
 		this.partId = partId;
+	}
+	public String getPartCode() {
+		return partCode;
+	}
+	public void setPartCode(String partCode) {
+		this.partCode = partCode;
 	}
 	public Double getPartWidth() {
 		return partWidth;
@@ -57,6 +67,12 @@ public class Part {
 	public void setPartHeight(Double partHeight) {
 		this.partHeight = partHeight;
 	}
+	public String getPartBCost() {
+		return partBCost;
+	}
+	public void setPartBCost(String partBCost) {
+		this.partBCost = partBCost;
+	}
 	public String getPartCurrency() {
 		return partCurrency;
 	}
@@ -71,8 +87,10 @@ public class Part {
 	}
 	@Override
 	public String toString() {
-		return "Part [partId=" + partId + ", partWidth=" + partWidth + ", partLength=" + partLength + ", partHeight="
-				+ partHeight + ", partCurrency=" + partCurrency + ", partDesc=" + partDesc + "]";
+		return "Part [partId=" + partId + ", partCode=" + partCode + ", partWidth=" + partWidth + ", partLength="
+				+ partLength + ", partHeight=" + partHeight + ", partBCost=" + partBCost + ", partCurrency="
+				+ partCurrency + ", partDesc=" + partDesc + "]";
 	}
+	
 	
 }

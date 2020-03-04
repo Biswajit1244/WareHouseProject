@@ -30,15 +30,17 @@ public class PartPdfView extends AbstractPdfView {
 		@SuppressWarnings("unchecked")
 		List<Part> list=(List<Part>) model.get("list");
 		//creating table element add no of column
-		PdfPTable t=new PdfPTable(6);
-		t.addCell("ID"); t.addCell("WIDTH");
-		t.addCell("LENGTH"); t.addCell("HEIGHT");
+		PdfPTable t=new PdfPTable(8);
+		t.addCell("ID");t.addCell("CODE"); t.addCell("WIDTH");
+		t.addCell("LENGTH"); t.addCell("HEIGHT");t.addCell("BASE COST");
 		t.addCell("CURRENCY"); t.addCell("DESCRIPTION");
 		for(Part om:list) {
 			t.addCell(om.getPartId().toString());
+			t.addCell(om.getPartCode());
 			t.addCell(om.getPartWidth().toString());
 			t.addCell(om.getPartLength().toString());
 			t.addCell(om.getPartHeight().toString());
+			t.addCell(om.getPartBCost());
 			t.addCell(om.getPartCurrency());
 			t.addCell(om.getPartDesc());
 		}

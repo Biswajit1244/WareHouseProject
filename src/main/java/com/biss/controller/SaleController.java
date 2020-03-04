@@ -5,8 +5,8 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 import java.util.Arrays;
 import java.util.List;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +17,8 @@ import com.biss.excel.SaleExcelView;
 import com.biss.excel.SalePdfView;
 import com.biss.model.Sale;
 import com.biss.service.ISaleService;
-
+@Controller
+@RequestMapping("/sale")
 public class SaleController {
 	@Autowired
 	private ISaleService ser;

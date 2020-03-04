@@ -6,44 +6,57 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Part Registration Page</title>
+<title>Part Edit Page</title>
 
 <style type="text/css">
-	.btn-lg{
-		margin-left: 200px;
-	}
-	.card-body{
-		background-color:#adb9cc;
-	}
-	#head,h3{
-		background-color: #a70907;
-	}
-	.form-control{
-		margin-top:20px;
-  		border: 5px;
-  		border-radius: 10px;
-  		border-bottom: 2px solid gray;
-  		font-size: 15px;
-  		color: green;
-	}
-	.control-label{
-		font-size: 15px;
-  		margin-top: 20px;
-  		font-weight: bold;
-	}
+.btn-lg {
+	margin-left: 200px;
+}
+
+.card-body {
+	background-color: #adb9cc;
+}
+
+#head, h3 {
+	background-color: #a70907;
+}
+
+.form-control {
+	margin-top: 20px;
+	border: 5px;
+	border-radius: 10px;
+	border-bottom: 2px solid gray;
+	font-size: 15px;
+	color: green;
+}
+
+.control-label {
+	font-size: 15px;
+	margin-top: 20px;
+	font-weight: bold;
+}
 </style>
 </head>
 <body>
 	<%@include file="UserMenu.jsp"%>
 	<div class="container">
 		<div class="card-header" id="head">
-			<h3 class="text-center text-white">PART REGISTTRATION PAGE</h3>
+			<h3 class="text-center text-white">PART UPDATE PAGE</h3>
 		</div>
 		<div class="card-body">
 			<div class="row">
 				<div class="col-lg-2"></div>
 				<div class="col-lg-8">
-					<form:form method="post" action="save" modelAttribute="part">
+					<form:form method="post" action="update" modelAttribute="part">
+						<div class="row">
+							<div class="col-3">
+								<label class="control-label">ID</label>
+							</div>
+							<div class="col-6">
+								<form:input path="partId" class="form-control" readonly="true"/>
+							</div>
+							<div class="col-3"></div>
+						</div>
 						<div class="row">
 							<div class="col-lg-3">
 								<label class="control-label">CODE</label>
@@ -58,13 +71,16 @@
 								<label class="control-label">DIMENSION</label>
 							</div>
 							<div class="col-lg-3">
-								<form:input path="partWidth" class="form-control" placeholder="Width"/>
+								<form:input path="partWidth" class="form-control"
+									placeholder="Width" />
 							</div>
 							<div class="col-lg-3">
-								<form:input path="partLength" class="form-control" placeholder="Length"/>
+								<form:input path="partLength" class="form-control"
+									placeholder="Length" />
 							</div>
 							<div class="col-lg-3">
-								<form:input path="partHeight" class="form-control" placeholder="Height"/>
+								<form:input path="partHeight" class="form-control"
+									placeholder="Height" />
 							</div>
 						</div>
 						<div class="row">
@@ -139,7 +155,7 @@
 							<div class="col-3"></div>
 						</div>
 						<br>
-						<input type="submit" value="CREATE" class="btn btn-primary btn-lg">
+						<input type="submit" value="UPDATE" class="btn btn-primary btn-lg">
 					</form:form>
 				</div>
 				<div class="col-lg-2"></div>

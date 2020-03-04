@@ -5,13 +5,13 @@
 <head>
 <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="../resources/css/bootstrap.min.css">         
+<script src="../resources/js/bootstrap.min.js"></script>
 <title>Order View</title>
 </head>
 <body>
-	<h3>Order View Page</h3>
+	<%@include file="UserMenu.jsp" %>
+	<h3 class="text-success">Order View Page</h3>
 	<div class="col-lg-1"></div>
 	<div class="col-lg-4">
 	<table class="table">
