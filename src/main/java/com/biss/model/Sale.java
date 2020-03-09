@@ -25,7 +25,7 @@ public class Sale {
 	@Column(name="stock_source")
 	private String saleStkSource;
 	@Column(name="default_status")
-	private final String saleDfltSts="SALE-OPEN";
+	private String saleDfltSts;
 	@Column(name="description")
 	private String saleDes;
 	public Sale() {
@@ -73,6 +73,9 @@ public class Sale {
 	}
 	public String getSaleDfltSts() {
 		return saleDfltSts;
+	}
+	public void setSaleDfltSts(String saleDfltSts) {
+		this.saleDfltSts = saleDfltSts;
 	}
 	@Override
 	public String toString() {

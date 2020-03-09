@@ -13,88 +13,89 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.biss.excel.SaleExcelView;
-import com.biss.excel.SalePdfView;
-import com.biss.model.Sale;
-import com.biss.service.ISaleService;
+import com.biss.excel.ShippingExcelView;
+import com.biss.excel.ShippingPdfView;
+import com.biss.model.Shipping;
+import com.biss.service.IShippingService;
+
 @Controller
-@RequestMapping("/sale")
-public class SaleController {
+@RequestMapping("/shipping")
+public class ShippingController {
 	@Autowired
-	private ISaleService ser;
+	private IShippingService ser;
 	
 	
 	//1.Show Reg page
 	@RequestMapping("/register")
 	public String showRegPage(Model model) {
-		model.addAttribute("sale",new Sale());
-	return "SaleRegPage";
+		model.addAttribute("shipping",new Shipping());
+	return "ShippingRegPage";
 	}
 	//2.on click save Operation
 	@RequestMapping(value = "/save",method =POST)
-	public String saveOneSale(@ModelAttribute Sale sale,Model m) {
-		Integer id=ser.saveSale(sale);
-		String msg="Sale "+id+" Saved";
+	public String saveOneShipping(@ModelAttribute Shipping shipping,Model m) {
+		Integer id=ser.saveShipping(shipping);
+		String msg="Shipping "+id+" Saved";
 		m.addAttribute("msg",msg);
-		m.addAttribute("sale",new Sale());
-	return "SaleRegPage";
+		m.addAttribute("shipping",new Shipping());
+	return "ShippingRegPage";
 	}
 	//3.show all data
 	@RequestMapping("/all")
-	public String getAllSale(Model model) {
-		List<Sale> list=ser.getAllSale();
+	public String getAllShipping(Model model) {
+		List<Shipping> list=ser.getAllShipping();
 		model.addAttribute("list",list);
-	return "SaleData";
+	return "ShippingData";
 	}
 	//4.delete one order
 	@RequestMapping("/delete")
-	public String deleteSale(@RequestParam("sid")Integer id,Model m) {
-		ser.deleteSale(id);
-		String msg="SaleOrder "+id+" Deleted";
+	public String deleteShipping(@RequestParam("sid")Integer id,Model m) {
+		ser.deleteShipping(id);
+		String msg="ShippingOrder "+id+" Deleted";
 		m.addAttribute("msg", msg);
 		
-		List<Sale> list=ser.getAllSale();
+		List<Shipping> list=ser.getAllShipping();
 		m.addAttribute("list",list);
-	return "SaleData";
+	return "ShippingData";
 	}
 	//5.show edit page
 	@RequestMapping("/edit")
 	public String showEditPage(@RequestParam("sid")Integer id,Model m) {
-		Sale Sale=ser.getOneSale(id);
-		m.addAttribute("sale",Sale);
-		return "SaleEditPage";
+		Shipping Shipping=ser.getOneShipping(id);
+		m.addAttribute("shipping",Shipping);
+		return "ShippingEditPage";
 	}
 	//6.on click update operation
 	@RequestMapping(value="/update" ,method=POST)
-	public String updateSale(@ModelAttribute Sale sale,Model m) {
-		ser.updateSale(sale);
-		String msg="Sale Order "+sale.getSaleId()+" Updated";
+	public String updateShipping(@ModelAttribute Shipping shipping,Model m) {
+		ser.updateShipping(shipping);
+		String msg="Shipping Order "+shipping.getShpId()+" Updated";
 		m.addAttribute("msg",msg);
 		
-		List<Sale> list=ser.getAllSale();
+		List<Shipping> list=ser.getAllShipping();
 		m.addAttribute("list",list);
-		return "SaleData";
+		return "ShippingData";
 	}
 	//7.view one Order
 	@RequestMapping("/view")
 	public String showViewPage(@RequestParam("sid")Integer id,Model m) {
-		Sale om=ser.getOneSale(id);
+		Shipping om=ser.getOneShipping(id);
 		System.out.println(om);
 		m.addAttribute("ob",om);
-		return "SaleView";
+		return "ShippingView";
 	}
 	//Excel Export
 	@RequestMapping("/excel")
 	public ModelAndView showExcel(@RequestParam(value="sid",required = false)Integer id) {
 		ModelAndView mv=new ModelAndView();
-		mv.setView(new SaleExcelView());
+		mv.setView(new ShippingExcelView());
 		if(id==null) {
 		//fething all data 
-		List<Sale> list=ser.getAllSale();
+		List<Shipping> list=ser.getAllShipping();
 		mv.addObject("list",list);
 		}else {
 			//fetch one data
-		Sale	om=ser.getOneSale(id);
+		Shipping	om=ser.getOneShipping(id);
 		mv.addObject("list",Arrays.asList(om));
 		}
 		return mv;
@@ -103,14 +104,14 @@ public class SaleController {
 	@RequestMapping("/pdf")
 	public ModelAndView showPDf(@RequestParam(value="sid",required = false)Integer id) {
 		ModelAndView mv=new ModelAndView();
-		mv.setView(new SalePdfView());
+		mv.setView(new ShippingPdfView());
 		if(id==null) {
 		//fething all data 
-		List<Sale> list=ser.getAllSale();
+		List<Shipping> list=ser.getAllShipping();
 		mv.addObject("list",list);
 		}else {
 			//fetch one data
-		Sale	om=ser.getOneSale(id);
+		Shipping	om=ser.getOneShipping(id);
 		mv.addObject("list",Arrays.asList(om));
 		}
 		return mv;
