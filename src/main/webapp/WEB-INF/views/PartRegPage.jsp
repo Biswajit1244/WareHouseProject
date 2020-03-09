@@ -97,10 +97,10 @@
 								<label class="control-label">UOM</label>
 							</div>
 							<div class="col-6">
-								<form:select path="" class="form-control">
+								<form:select path="uom.uomId" class="form-control">
 									<form:option value="" disabled="true" selected="true"
 										hidden="true">--Select--</form:option>
-
+									<form:options items="${uomMap}"/>
 								</form:select>
 							</div>
 							<div class="col-3"></div>
@@ -111,9 +111,10 @@
 							</div>
 							<div class="col-6">
 								sale(only one select)
-								<form:select path="" class="form-control">
+								<form:select path="omObSale.orderId" class="form-control">
 									<form:option value="" disabled="true" selected="true"
 										hidden="true">--Select--</form:option>
+									<form:options items="${omSaleMap}"/>
 								</form:select>
 							</div>
 							<div class="col-3"></div>
@@ -122,9 +123,10 @@
 							<div class="col-lg-3"></div>
 							<div class="col-6">
 								purchase(only one select)
-								<form:select path="" class="form-control">
+								<form:select path="omObPur.orderId" class="form-control">
 									<form:option value="" disabled="true" selected="true"
 										hidden="true">--Select--</form:option>
+									<form:options items="${omPurMap}"/>
 								</form:select>
 							</div>
 							<div class="col-3"></div>

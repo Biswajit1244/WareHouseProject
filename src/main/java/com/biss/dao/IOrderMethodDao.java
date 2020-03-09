@@ -13,4 +13,5 @@ public interface IOrderMethodDao {
 	void updateOrderMethod(OrderMethod sp);
 	
 	List<Object[]> getOrderTypeCount();
+	List<Object[]> getOmIdAndOmCode(String mode);
 }

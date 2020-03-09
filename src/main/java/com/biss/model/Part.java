@@ -4,6 +4,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -25,9 +27,22 @@ public class Part {
 	@Column(name="p_height")
 	private Double partHeight;
 	@Column(name="p_bcost")
-	private String partBCost;
+	private Double partBCost;
 	@Column(name="p_currency")
 	private String partCurrency;
+	
+	@ManyToOne
+	@JoinColumn(name="uomidfk")
+	private UomType uom;
+	
+	@ManyToOne
+	@JoinColumn(name="omIdSaleFk")
+	private  OrderMethod omObSale;
+	
+	@ManyToOne
+	@JoinColumn(name="omIdPurFk")
+	private  OrderMethod omObPur;
+	
 	@Column(name="p_desc")
 	private String partDesc;
 	public Part() {
@@ -67,10 +82,10 @@ public class Part {
 	public void setPartHeight(Double partHeight) {
 		this.partHeight = partHeight;
 	}
-	public String getPartBCost() {
+	public Double getPartBCost() {
 		return partBCost;
 	}
-	public void setPartBCost(String partBCost) {
+	public void setPartBCost(Double partBCost) {
 		this.partBCost = partBCost;
 	}
 	public String getPartCurrency() {
@@ -85,12 +100,32 @@ public class Part {
 	public void setPartDesc(String partDesc) {
 		this.partDesc = partDesc;
 	}
+	public UomType getUom() {
+		return uom;
+	}
+	public void setUom(UomType uom) {
+		this.uom = uom;
+	}
+	public OrderMethod getOmObSale() {
+		return omObSale;
+	}
+	public void setOmObSale(OrderMethod omObSale) {
+		this.omObSale = omObSale;
+	}
+	public OrderMethod getOmObPur() {
+		return omObPur;
+	}
+	public void setOmObPur(OrderMethod omObPur) {
+		this.omObPur = omObPur;
+	}
 	@Override
 	public String toString() {
 		return "Part [partId=" + partId + ", partCode=" + partCode + ", partWidth=" + partWidth + ", partLength="
 				+ partLength + ", partHeight=" + partHeight + ", partBCost=" + partBCost + ", partCurrency="
-				+ partCurrency + ", partDesc=" + partDesc + "]";
+				+ partCurrency + ", uom=" + uom + ", omObSale=" + omObSale + ", omObPur=" + omObPur + ", partDesc="
+				+ partDesc + "]";
 	}
+	
 	
 	
 }

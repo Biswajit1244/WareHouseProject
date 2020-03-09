@@ -23,7 +23,7 @@ public class Purchase {
 	@Column(name="P_quality_chk")
 	private String purQtChck;
 	@Column(name="p_deflt_stats")
-	private final String purDfltSts="OPEN";
+	private String purDfltSts;
 	@Column(name="description")
 	private String purDesc;
 	public Purchase() {
@@ -33,6 +33,7 @@ public class Purchase {
 		super();
 		this.purId = purId;
 	}
+	
 	public Integer getPurId() {
 		return purId;
 	}
@@ -57,14 +58,17 @@ public class Purchase {
 	public void setPurQtChck(String purQtChck) {
 		this.purQtChck = purQtChck;
 	}
+	public String getPurDfltSts() {
+		return purDfltSts;
+	}
+	public void setPurDfltSts(String purDfltSts) {
+		this.purDfltSts = purDfltSts;
+	}
 	public String getPurDesc() {
 		return purDesc;
 	}
 	public void setPurDesc(String purDesc) {
 		this.purDesc = purDesc;
-	}
-	public String getPurDfltSts() {
-		return purDfltSts;
 	}
 	@Override
 	public String toString() {

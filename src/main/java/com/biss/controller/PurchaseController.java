@@ -20,7 +20,7 @@ import com.biss.model.Purchase;
 import com.biss.service.IPurchaseService;
 @Controller
 @RequestMapping("/purchase")
-public class PuchaseController {
+public class PurchaseController {
 	@Autowired
 	private IPurchaseService ser;
 	
@@ -80,11 +80,11 @@ public class PuchaseController {
 	public String showViewPage(@RequestParam("pid")Integer id,Model m) {
 		Purchase om=ser.getOnePurchase(id);
 		m.addAttribute("ob",om);
-		return "PurchaseView";
+		return "PurchaseViewPage";
 	}
 	//Excel Export
 	@RequestMapping("/excel")
-	public ModelAndView showExcel(@RequestParam(value="oid",required = false)Integer id) {
+	public ModelAndView showExcel(@RequestParam(value="pid",required = false)Integer id) {
 		ModelAndView mv=new ModelAndView();
 		mv.setView(new PurchaseExcelView());
 		if(id==null) {
@@ -100,7 +100,7 @@ public class PuchaseController {
 	}
 	//Pdf Export
 	@RequestMapping("/pdf")
-	public ModelAndView showPDf(@RequestParam(value="oid",required = false)Integer id) {
+	public ModelAndView showPDf(@RequestParam(value="pid",required = false)Integer id) {
 		ModelAndView mv=new ModelAndView();
 		mv.setView(new PurchasePdfView());
 		if(id==null) {

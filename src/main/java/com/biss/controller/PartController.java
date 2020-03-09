@@ -4,6 +4,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,18 +17,42 @@ import org.springframework.web.servlet.ModelAndView;
 import com.biss.excel.PartExcelView;
 import com.biss.excel.PartPdfView;
 import com.biss.model.Part;
+import com.biss.service.IOrderMethodService;
 import com.biss.service.IPartService;
+import com.biss.service.IUomTypeService;
+import com.biss.utils.CommonUtil;
 
 @Controller
 @RequestMapping("/part")
 public class PartController {
 	@Autowired
 	private IPartService ser;
+	@Autowired
+	private IUomTypeService uomSer;
+	@Autowired
+	private IOrderMethodService omSer;
 	
+    //commons ui code 
+	private void commonsUi(Model model) {
+		List<Object[]> uomList=uomSer.getUomIdAndUomModel();
+		Map<Integer,String> uomMap=CommonUtil.convert(uomList);
+		model.addAttribute("uomMap",uomMap);
+		
+		//orderMethod sale
+		List<Object[]> omSaleList=omSer.getOmIdAndOmCode("Sale");
+		Map<Integer,String> omSaleMap=CommonUtil.convert(omSaleList);
+		model.addAttribute("omSaleMap",omSaleMap);
+		
+		//orderMethod purchase
+		List<Object[]> omPurList=omSer.getOmIdAndOmCode("Purchase");
+		Map<Integer,String> omPurMap=CommonUtil.convert(omPurList);
+		model.addAttribute("omPurMap",omPurMap);
+		}
 	//1.Show Reg page
 		@RequestMapping("/register")
 		public String showRegPage(Model model) {
 			model.addAttribute("part",new Part());
+			commonsUi(model);
 		return "PartRegPage";
 		}
 		//2.on click save Operation
@@ -37,6 +62,7 @@ public class PartController {
 			String msg="Part "+id+" Saved";
 			m.addAttribute("msg",msg);
 			m.addAttribute("part",new Part());
+			commonsUi(m);
 		return "PartRegPage";
 		}
 		//3.show all data
@@ -62,6 +88,7 @@ public class PartController {
 		public String showEditPage(@RequestParam("pid")Integer id,Model m) {
 			Part Part=ser.getOnePart(id);
 			m.addAttribute("part",Part);
+			commonsUi(m);
 			return "PartEditPage";
 		}
 		//6.on click update operation

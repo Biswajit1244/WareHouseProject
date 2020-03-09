@@ -3,10 +3,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="../resources/css/bootstrap.min.css">         
-<script src="../resources/js/bootstrap.min.js"></script>
 <title>Order View</title>
 </head>
 <body>

@@ -40,4 +40,10 @@ public class UomTypeDaoImpl implements IUomTypeDao {
 		String hq="select uomTp,count(uomTp) from com.biss.model.UomType group by uomTp";
 		return (List<Object[]>) ht.find(hq);
 	}
+	@SuppressWarnings({ "unchecked", "deprecation" })
+	@Override
+	public List<Object[]> getUomIdAndUomModel() {
+		String hql=" select uomId,uomModel from com.biss.model.UomType";
+		return (List<Object[]>) ht.find(hql);
+	}
 }

@@ -12,4 +12,7 @@ public interface IUomTypeDao {
 	UomType getOneUomType(Integer id);
 	void updateUomType(UomType sp);
 	List<Object[]> getUomTypeConunt();
+	
+	List<Object[]> getUomIdAndUomModel();
+		
 }

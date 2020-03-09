@@ -44,4 +44,9 @@ public class UomTypeServiceImpl implements IUomTypeService {
 	public List<Object[]> getUomTypeConunt() {
 		return dao.getUomTypeConunt();
 	}
+	@Override
+	@Transactional(readOnly = true)
+	public List<Object[]> getUomIdAndUomModel() {
+		return dao.getUomIdAndUomModel();
+	}
 }

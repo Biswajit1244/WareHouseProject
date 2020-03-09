@@ -29,7 +29,8 @@
   		font-weight: bold;
 	}
 </style>
-</head>
+
+</head> 
 <body>
 	<%@include file="UserMenu.jsp"%>
 	<div class="container">

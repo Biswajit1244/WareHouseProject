@@ -25,17 +25,19 @@ th {
 	<c:choose>
 		<c:when test="${!empty list}">
 		<div class="row">
-			<div class="col-lg-2"></div>
-			<div class="col-lg-8">
+			<div class="col-lg-1"></div>
+			<div class="col-lg-10">
 				<div class="row">
 					<table class="table table-hover table-dark">
 						<thead class="bg-danger">
 							<tr>
-								<th rowspan="2">ID</th>
 								<th rowspan="2">CODE</th>
 								<th colspan="3">DIMENSION</th>
 								<th rowspan="2">BASE COST</th>
 								<th rowspan="2">CURRENCY</th>
+								<th rowspan="2">MODEL</th>
+								<th rowspan="2">SALE CODE</th>
+								<th rowspan="2">PURCHASE CODE</th>
 								<th rowspan="2">DESCRIPTION</th>
 								<th colspan="3" rowspan="2">OPERATION</th>
 							</tr>
@@ -48,13 +50,15 @@ th {
 						<tbody>
 							<c:forEach items="${list}" var="ob">
 								<tr>
-									<td>${ob.partId }</td>
 									<td>${ob.partCode }</td>
 									<td>${ob.partWidth }</td>
 									<td>${ob.partLength }</td>
 									<td>${ob.partHeight }</td>
 									<td>${ob.partBCost}</td>
 									<td>${ob.partCurrency }</td>
+									<td>${ob.uom.uomModel}</td>
+									<td>${ob.omObSale.orderCode}
+									<td>${ob.omObPur.orderCode}
 									<td>${ob.partDesc }</td>
 									<td colspan="3"><a href="delete?pid=${ob.partId}">
 											<button class="btn btn-danger">DELETE</button>
@@ -76,7 +80,7 @@ th {
 					<span class="text-danger">${msg}</span>
 				</div>
 			</div>
-			<div class="col-lg-2"></div>
+			<div class="col-lg-1"></div>
 		</div>
 		</c:when>
 		<c:otherwise>

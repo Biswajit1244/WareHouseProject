@@ -37,6 +37,9 @@
 			<th>CURRENCY</th><td>${ob.partCurrency }</td>
 		</tr>
 		<tr>
+			<th>MODEL</th><td>${ob.uom.uomModel }</td>
+		</tr>
+		<tr>
 			<th>DECRIPTION</th><td>${ob.partDesc}</td>
 		</tr>
 	</table>
