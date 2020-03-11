@@ -4,6 +4,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -18,12 +20,24 @@ public class Purchase {
 	private Integer purId;
 	@Column(name="pcode")
 	private String purCode;
+	
 	@Column(name="p_ref_num")
 	private String purRefNum;
 	@Column(name="P_quality_chk")
 	private String purQtChck;
 	@Column(name="p_deflt_stats")
 	private String purDfltSts;
+	
+	//Shipment module  integration
+	@ManyToOne
+	@JoinColumn(name="shipIdFk")
+	private ShipmentType shipOb;
+	
+	//WhUser Module Integration for vendor
+	@ManyToOne
+	@JoinColumn(name="whIdFk")
+	private WhUserType whUserOb;
+	
 	@Column(name="description")
 	private String purDesc;
 	public Purchase() {
@@ -64,6 +78,18 @@ public class Purchase {
 	public void setPurDfltSts(String purDfltSts) {
 		this.purDfltSts = purDfltSts;
 	}
+	public ShipmentType getShipOb() {
+		return shipOb;
+	}
+	public void setShipOb(ShipmentType shipOb) {
+		this.shipOb = shipOb;
+	}
+	public WhUserType getWhUserOb() {
+		return whUserOb;
+	}
+	public void setWhUserOb(WhUserType whUserOb) {
+		this.whUserOb = whUserOb;
+	}
 	public String getPurDesc() {
 		return purDesc;
 	}
@@ -73,7 +99,9 @@ public class Purchase {
 	@Override
 	public String toString() {
 		return "Purchase [purId=" + purId + ", purCode=" + purCode + ", purRefNum=" + purRefNum + ", purQtChck="
-				+ purQtChck + ", purDfltSts=" + purDfltSts + ", purDesc=" + purDesc + "]";
+				+ purQtChck + ", purDfltSts=" + purDfltSts + ", shipOb=" + shipOb + ", whUserOb=" + whUserOb
+				+ ", purDesc=" + purDesc + "]";
 	}
+	
 	
 }

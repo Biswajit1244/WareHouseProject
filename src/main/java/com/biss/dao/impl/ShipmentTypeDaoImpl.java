@@ -42,4 +42,10 @@ public class ShipmentTypeDaoImpl implements IShipmentTypeDao {
 				+ " group by shipMode ";
 		return (List<Object[]>) ht.find(hql);
 	}
+	@SuppressWarnings({ "unchecked", "deprecation" })
+	@Override
+	public List<Object[]> getShipmentIdAndCode() {
+		String hql=" select shipId,shipCode from com.biss.model.ShipmentType where enbShip='Yes' ";
+		return (List<Object[]>) ht.find(hql);
+	}
 }

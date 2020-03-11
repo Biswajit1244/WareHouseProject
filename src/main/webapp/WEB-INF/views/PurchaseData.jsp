@@ -14,8 +14,8 @@
 	<c:choose>
 		<c:when test="${!empty list}">
 		<div class="row">
-			<div class="col-lg-2"></div>
-			<div class="col-lg-8">
+			<div class="col-1"></div>
+			<div class="col-9">
 				<div class="row">
 					<table class="table table-dark table-hover">
 						<thead class="bg-danger">
@@ -25,6 +25,8 @@
 							<th>REF NUM</th>
 							<th>QUALITY CHECK</th>
 							<th>DEFAULT STATUS</th>
+							<th>SHIPMENT CODE</th>
+							<th>VENDOR</th>
 							<th>DESCRIPTION</th>
 							<th colspan="3">OPERATION</th>
 						 </tr>
@@ -37,6 +39,8 @@
 									<td>${ob.purRefNum }</td>
 									<td>${ob.purQtChck }</td>
 									<td>${ob.purDfltSts }</td>
+									<td>${ob.shipOb.shipCode}</td>
+									<td>${ob.whUserOb.whUserCode}</td>
 									<td>${ob.purDesc }</td>
 									<td colspan="3"><a href="delete?pid=${ob.purId}"><button
 												class="btn btn-danger">DELETE</button></a> <a
@@ -56,7 +60,7 @@
 					<span class="text-danger">${msg}</span>
 				</div>
 			</div>
-			<div class="col-lg-2"></div>
+			<div class="col-2"></div>
 		</div>
 		</c:when>
 		<c:otherwise>Data Not Found..!!</c:otherwise>

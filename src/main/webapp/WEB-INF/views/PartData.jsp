@@ -35,7 +35,7 @@ th {
 								<th colspan="3">DIMENSION</th>
 								<th rowspan="2">BASE COST</th>
 								<th rowspan="2">CURRENCY</th>
-								<th rowspan="2">MODEL</th>
+								<th rowspan="2">UOM</th>
 								<th rowspan="2">SALE CODE</th>
 								<th rowspan="2">PURCHASE CODE</th>
 								<th rowspan="2">DESCRIPTION</th>

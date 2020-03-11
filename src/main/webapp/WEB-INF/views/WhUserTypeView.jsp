@@ -3,13 +3,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-<<meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
- <link rel="stylesheet" href="../resources/css/bootstrap.min.css">         
-  <script src="../resources/js/bootstrap.min.js"></script>
+
 <title>WhUser View</title>
 </head>
 <body>
+	<%@include file="UserMenu.jsp"%>
 	<h3>WhUser View Page</h3>
 	<div class="col-lg-1"></div>
 	<div class="col-lg-4">

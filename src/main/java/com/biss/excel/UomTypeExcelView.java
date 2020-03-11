@@ -24,6 +24,7 @@ public class UomTypeExcelView extends AbstractXlsxView {
 		//construct row(0)
 		setHead(s);
 		//read model Data
+		@SuppressWarnings("unchecked")
 		List<UomType> list=(List<UomType>) model.get("list");
 		setBody(list,s);
 	}

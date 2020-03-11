@@ -34,10 +34,20 @@
 					<td>${ob.purDfltSts}</td>
 				</tr>
 				<tr>
+					<th>SHIPMENT CODE</th>
+					<td>${ob.shipOb.shipCode}</td>
+				</tr>
+				<tr>
+					<th>VENDOR</th>
+					<td>${ob.whUserOb.whUserCode}</td>
+				</tr>
+				<tr>
 					<th>DESCRIPTION</th>
 					<td>${ob.purDesc}</td>
 				</tr>
 			</table>
+			<a href="excel?pid=${ob.purId}">EXCEL EXPORT</a>&nbsp;|&nbsp; <a
+				href="pdf?pid=${ob.purId}">PDF EXPORT</a>
 		</div>
 		<div class="col-7"></div>
 	</div>

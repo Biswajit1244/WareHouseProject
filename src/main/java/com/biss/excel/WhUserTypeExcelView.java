@@ -24,6 +24,7 @@ public class WhUserTypeExcelView extends AbstractXlsxView {
 		//construct row(0)
 		setHead(s);
 		//read model Data
+		@SuppressWarnings("unchecked")
 		List<WhUserType> list=(List<WhUserType>) model.get("list");
 		setBody(list,s);
 	}

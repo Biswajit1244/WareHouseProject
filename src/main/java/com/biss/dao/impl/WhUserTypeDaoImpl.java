@@ -44,4 +44,10 @@ public class WhUserTypeDaoImpl implements IWhUserTypeDao {
 				+ " group by whUserIdType ";
 		return (List<Object[]>) ht.find(hql);
 	}
+	@SuppressWarnings({ "unchecked", "deprecation" })
+	@Override
+	public List<Object[]> getWhUserIdAndCode(String type) {
+		String hql=" select userId,whUserCode from com.biss.model.WhUserType where whUserType=?0 ";
+		return (List<Object[]>) ht.find(hql,type);
+	}
 }

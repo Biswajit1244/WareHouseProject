@@ -30,16 +30,19 @@ public class PurchasePdfView extends AbstractPdfView {
 		@SuppressWarnings("unchecked")
 		List<Purchase> list=(List<Purchase>) model.get("list");
 		//creating table element add no of column
-		PdfPTable t=new PdfPTable(6);
+		PdfPTable t=new PdfPTable(8);
 		t.addCell("OREDE ID"); t.addCell("ORDER CODE");
 		t.addCell("REF NUMBER"); t.addCell("QTY CHECK");
-		t.addCell("DEFAULT STATUS"); t.addCell("DESCRIPTION");
+		t.addCell("DEFAULT STATUS"); t.addCell("SHIPMENT CODE");
+		t.addCell("VENDOR"); t.addCell("DESCRIPTION");
 		for(Purchase om:list) {
 			t.addCell(om.getPurId().toString());
 			t.addCell(om.getPurCode());
 			t.addCell(om.getPurRefNum());
 			t.addCell(om.getPurQtChck());
 			t.addCell(om.getPurDfltSts());
+			t.addCell(om.getShipOb().getShipCode());
+			t.addCell(om.getWhUserOb().getWhUserCode());
 			t.addCell(om.getPurDesc());
 		}
 		document.add(t);

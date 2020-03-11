@@ -51,9 +51,9 @@
 						<label class="control-label"> USER TYPE</label>
 					</div>
 					<div class="col-6">
-						<form:radiobutton path="whUserType" value="vendor" />
+						<form:radiobutton path="whUserType" value="Vendor" />
 						<label class="control-label">Vendor</label>
-						<form:radiobutton path="whUserType" value="customer" />
+						<form:radiobutton path="whUserType" value="Customer" />
 						<label class="control-label">Customer</label>
 					</div>
 					<div class="col-3"></div>

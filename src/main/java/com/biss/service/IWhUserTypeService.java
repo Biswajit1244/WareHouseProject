@@ -13,4 +13,5 @@ public interface IWhUserTypeService {
 	void updateWhUserType(WhUserType sp);
 	
 	List<Object[]> getWhuserIdCount();
+	List<Object[]> getWhUserIdAndCode(String type);
 }

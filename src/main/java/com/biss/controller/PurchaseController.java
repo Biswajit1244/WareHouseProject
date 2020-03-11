@@ -4,7 +4,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 import java.util.Arrays;
 import java.util.List;
-
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,16 +18,35 @@ import com.biss.excel.PurchaseExcelView;
 import com.biss.excel.PurchasePdfView;
 import com.biss.model.Purchase;
 import com.biss.service.IPurchaseService;
+import com.biss.service.IShipmentTypeService;
+import com.biss.service.IWhUserTypeService;
+import com.biss.utils.CommonUtil;
 @Controller
 @RequestMapping("/purchase")
 public class PurchaseController {
 	@Autowired
 	private IPurchaseService ser;
+	@Autowired
+	private IShipmentTypeService shipSer;
+	@Autowired
+	private IWhUserTypeService whUserSer;
+	
+	//Common UI code
+	private void commonUi(Model m) {
+	List<Object[]> shipList=shipSer.getShipmentIdAndCode();
+	Map<Integer,String> shipMap=CommonUtil.convert(shipList);
+	m.addAttribute("shipMap",shipMap);
+	
+	List<Object[]> whUserList=whUserSer.getWhUserIdAndCode("Vendor");
+	Map<Integer,String> whUserMap=CommonUtil.convert(whUserList);
+	m.addAttribute("whUserMap",whUserMap);
+	}
 	
 	//1.Show Reg page
 	@RequestMapping("/register")
 	public String showRegPage(Model model) {
 		model.addAttribute("purchase",new Purchase());
+		commonUi(model);
 	return "PurchaseRegPage";
 	}
 	//2.on click save Operation
@@ -37,6 +56,7 @@ public class PurchaseController {
 		String msg="Purchase "+id+" Saved";
 		m.addAttribute("msg",msg);
 		m.addAttribute("purchase",new Purchase());
+		commonUi(m);
 	return "PurchaseRegPage";
 	}
 	//3.show all data
@@ -62,6 +82,7 @@ public class PurchaseController {
 	public String showEditPage(@RequestParam("pid")Integer id,Model m) {
 		Purchase Purchase=ser.getOnePurchase(id);
 		m.addAttribute("purchase",Purchase);
+		commonUi(m);
 		return "PurchaseEditPage";
 	}
 	//6.on click update operation

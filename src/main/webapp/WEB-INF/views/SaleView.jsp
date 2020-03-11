@@ -8,30 +8,30 @@
 </head>
 <body>
 	<%@include file="UserMenu.jsp" %>
-	<h3 class="text-success">Order View Page</h3>
+	<h3 class="text-success">Sale View Page</h3>
 	<div class="col-lg-1"></div>
 	<div class="col-lg-4">
 	<table class="table">
 		<tr>
-			<th>ID</th><td>${ob.}</td>
+			<th>ID</th><td>${ob.saleId}</td>
 		</tr>
 		<tr>
-			<th>ID</th><td>${ob.}</td>
+			<th>CODE</th><td>${ob.saleOrderCode}</td>
 		</tr>
 		<tr>
-			<th>ID</th><td>${ob.}</td>
+			<th>REF NUM</th><td>${ob.saleRefNo}</td>
 		</tr>
 		<tr>
-			<th>ID</th><td>${ob.}</td>
+			<th>STOCK MODE</th><td>${ob.saleStkMode}</td>
 		</tr>
 		<tr>
-			<th>ID</th><td>${ob.}</td>
+			<th>STOCK SOURCE</th><td>${ob.saleStkSource}</td>
 		</tr>
 		<tr>
-			<th>ID</th><td>${ob.}</td>
+			<th>STATUS</th><td>${ob.saleDfltSts}</td>
 		</tr>
 		<tr>
-			<th>ID</th><td>${ob.}</td>
+			<th>DESCRIPTION</th><td>${ob.saleDes}</td>
 		</tr>
 	</table>
 	<a href="excel?sid=${ob.saleId}">EXCEL EXPORT</a>&nbsp;|&nbsp;

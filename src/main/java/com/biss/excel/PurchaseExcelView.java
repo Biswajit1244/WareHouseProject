@@ -37,7 +37,9 @@ public class PurchaseExcelView extends AbstractXlsxView {
 				r.createCell(2).setCellValue("REF NUMBER");
 				r.createCell(3).setCellValue("QTY CHECK");
 				r.createCell(4).setCellValue("DEFAULT STATUS");
-				r.createCell(5).setCellValue("DESCRIPTION");
+				r.createCell(5).setCellValue("SHIPMENT CODE");
+				r.createCell(6).setCellValue("VENDOR");
+				r.createCell(7).setCellValue("DESCRIPTION");
 			}
 			private void setBody(List<Purchase> list, Sheet s) {
 				int count=1;
@@ -48,7 +50,9 @@ public class PurchaseExcelView extends AbstractXlsxView {
 					r.createCell(2).setCellValue(om.getPurRefNum());
 					r.createCell(3).setCellValue(om.getPurQtChck());
 					r.createCell(4).setCellValue(om.getPurDfltSts());
-					r.createCell(5).setCellValue(om.getPurDesc());
+					r.createCell(5).setCellValue(om.getShipOb().getShipCode());
+					r.createCell(6).setCellValue(om.getWhUserOb().getWhUserCode());
+					r.createCell(7).setCellValue(om.getPurDesc());
 				}
 			}
 

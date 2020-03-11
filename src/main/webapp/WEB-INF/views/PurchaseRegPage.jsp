@@ -61,9 +61,10 @@
 								<label class="control-label">Shipment Code</label>
 							</div>
 							<div class="col-6">
-								<form:select path="" class="form-control">
+								<form:select path="shipOb.shipId" class="form-control">
 									<form:option value="" disabled="true" selected="true"
 										hidden="true">--Select Type--</form:option>
+									<form:options items="${shipMap}"/>
 								</form:select>
 							</div>
 							<div class="col-3"></div>
@@ -73,9 +74,10 @@
 								<label class="control-label">Vendor</label>
 							</div>
 							<div class="col-6">
-								<form:select path="" class="form-control">
+								<form:select path="whUserOb.userId" class="form-control">
 									<form:option value="" disabled="true" selected="true"
 										hidden="true">--Select Type--</form:option>
+									<form:options items="${whUserMap}"/>
 								</form:select>
 							</div>
 							<div class="col-3"></div>

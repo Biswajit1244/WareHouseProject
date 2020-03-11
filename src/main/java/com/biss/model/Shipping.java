@@ -24,9 +24,9 @@ public class Shipping {
 	private String shpContDetails;
 	@Column(name="sale_code")
 	private String shpSaleCode;
-	@Column(name="bill addrs")
+	@Column(name="bill_addrs")
 	private String shpBillAddrs;
-	@Column(name="shippng addrs")
+	@Column(name="shippng_addrs")
 	private String shpShipAddrs;
 	@Column(name="note")
 	private String shpDesc;

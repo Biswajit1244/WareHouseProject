@@ -24,7 +24,6 @@ public class ShippingController {
 	@Autowired
 	private IShippingService ser;
 	
-	
 	//1.Show Reg page
 	@RequestMapping("/register")
 	public String showRegPage(Model model) {

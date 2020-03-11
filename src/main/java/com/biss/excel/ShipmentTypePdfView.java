@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.web.servlet.view.document.AbstractPdfView;
 
-import com.biss.model.OrderMethod;
 import com.biss.model.ShipmentType;
 import com.lowagie.text.Document;
 import com.lowagie.text.Paragraph;

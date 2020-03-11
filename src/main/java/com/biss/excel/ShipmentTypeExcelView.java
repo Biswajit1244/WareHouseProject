@@ -24,6 +24,7 @@ public class ShipmentTypeExcelView extends AbstractXlsxView {
 				//construct row(0)
 				setHead(s);
 				//read model Data
+				@SuppressWarnings("unchecked")
 				List<ShipmentType> list=(List<ShipmentType>) model.get("list");
 				setBody(list,s);
 			}

@@ -27,6 +27,7 @@ public class OrderMethodPdfView extends AbstractPdfView {
 		//add element to document
 		document.add(p);
 		//read data from list
+		@SuppressWarnings("unchecked")
 		List<OrderMethod> list=(List<OrderMethod>) model.get("list");
 		//creating table element add no of column
 		PdfPTable t=new PdfPTable(6);
