@@ -34,5 +34,11 @@ public class PartDaoImpl implements IPartDao {
 	public void updatePart(Part sp) {
 		ht.update(sp);
 	}
-
+	@Override
+	public List<Object[]> getPartIdAndCode() {
+		String hql=" select partId,partCode from com.biss.model.Part ";
+		@SuppressWarnings({ "unchecked", "deprecation" })
+		List<Object[]> list=(List<Object[]>) ht.find(hql);
+		return list;
+	}
 }

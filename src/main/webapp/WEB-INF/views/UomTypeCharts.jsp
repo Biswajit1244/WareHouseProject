@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<%@include file="UserMenu.jsp" %>
 	<h3>WELCOME TO UOMTYPE CHARTS</h3>
 	<img src="../resources/images/uomTypePie.jpg" />
 	<img src="../resources/images/uomTypeBar.jpg" />

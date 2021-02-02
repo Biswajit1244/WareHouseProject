@@ -19,6 +19,7 @@ import com.biss.excel.WhUserTypeExcelView;
 import com.biss.excel.WhUserTypePdfView;
 import com.biss.model.WhUserType;
 import com.biss.service.IWhUserTypeService;
+import com.biss.utils.EmailUtil;
 import com.biss.utils.WhUserTypeUtil;
 
 @Controller
@@ -30,7 +31,8 @@ public class WhUserTypeController {
 	private ServletContext context;
 	@Autowired
 	private WhUserTypeUtil util;
-	
+	@Autowired
+	private EmailUtil emailUtil;
 	
 	@RequestMapping("/register")
 	public String registerWhUser(Model model) {
@@ -42,6 +44,20 @@ public class WhUserTypeController {
 		Integer id=ser.saveWhUser(whUserType);
 		
 		String msg="WhUser "+id+" Saved";
+		if(id!=null) { //send email
+			String text="Welcome to WhUser ="+whUserType.getWhUserCode()
+			+", type="+whUserType.getWhUserType()
+			+", All the best!!";
+			
+			boolean sent=emailUtil.sendEmail(
+					whUserType.getWhUserEmail(), 
+					"Welcome WhUser", 
+					text);
+			if(sent)
+				msg+=",Email also sent!";
+			else
+				msg+=",Email Sending Fail!";
+		}
 		m.addAttribute("msg",msg);
 		m.addAttribute("whUserType",new WhUserType());
 		return "WhUserRegister";

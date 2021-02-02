@@ -63,6 +63,7 @@
 							</div>
 							<div class="col-6">
 								<form:input path="uomModel" class="form-control" />
+								<span id="modelError"></span>
 							</div>
 							<div class="col-3"></div>
 						</div>
@@ -72,11 +73,12 @@
 							</div>
 							<div class="col-6">
 								<form:textarea path="uomDesc" class="form-control" />
+								<span id="descError"></span>
 							</div>
 							<div class="col-3"></div>
 						</div>
 						<br>
-						<input type="submit" value="CREATE UOM" class="btn btn-primary btn-lg">
+						<input type="submit" value="CREATE UOM" id="register" class="btn btn-primary btn-lg">
 					</form:form>
 				</div>
 				<div class="col-2"></div>
@@ -88,5 +90,68 @@
 			</div>
 		</c:if>
 	</div>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			//Hide Error Section
+			$("#modelError").hide();
+			$("#descError").hide();
+
+			//define flag for Error Section
+			var modelError=false;
+			var descError=false;
+			
+			//Link with action event
+			$("#uomModel").keyup(function(){
+					validate_modelError();
+				});
+			$("#uomDesc").keyup(function(){
+					validate_uomDesc();
+				})
+			
+			function validate_modelError(){
+				var model=$("#uomModel").val();
+				if(model==''){
+					$("#modelError").show();
+					$("#modelError").html("<b>Enter UOM Model<b>");
+					$("#modelError").css("color","red");
+					modelError=false;
+					}else{
+						$("#modelError").hide();
+						modelError=true;	
+						}
+				return modelError;
+				}
+			function validate_uomDesc(){
+				var val=$("#uomDesc").val();
+				if(val==""){
+					$("#descError").show();
+					$("#descError").html("<b>Give Some Details</b>")
+					$("#descError").css("color","red");
+					descError=false;
+					}else{
+						$("#descError").hide();
+						descError=true;
+						}
+				return descError;
+				}
+			$("#register").click(function(){
+				//Make all falge to fale
+				modelError=false;
+				descError=false;
+
+				//call all validate function
+				validate_modelError();
+				validate_uomDesc();
+
+				//check all validation returning true or not
+				//if not dont submit the request
+				if(modelError && descError){
+						return true;
+					}else{
+						return false;
+					}
+				});
+			});
+	</script>
 </body>
 </html>

@@ -4,6 +4,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -20,6 +22,11 @@ public class GRN {
 	private String grnCode;
 	@Column(name="gtype")
 	private String grnType;
+	
+	@OneToOne
+	@JoinColumn(name = "purIdFk",unique = true)
+	private Purchase purOb;
+	
 	@Column(name="gdesc")
 	private String grnDesc;
 	public GRN() {
@@ -47,6 +54,12 @@ public class GRN {
 	public void setGrnType(String grnType) {
 		this.grnType = grnType;
 	}
+	public Purchase getPurOb() {
+		return purOb;
+	}
+	public void setPurOb(Purchase purOb) {
+		this.purOb = purOb;
+	}
 	public String getGrnDesc() {
 		return grnDesc;
 	}
@@ -55,7 +68,9 @@ public class GRN {
 	}
 	@Override
 	public String toString() {
-		return "GRN [grnId=" + grnId + ", grnCode=" + grnCode + ", grnType=" + grnType + ", grnDesc=" + grnDesc + "]";
+		return "GRN [grnId=" + grnId + ", grnCode=" + grnCode + ", grnType=" + grnType + ", purOb=" + purOb
+				+ ", grnDesc=" + grnDesc + "]";
 	}
+
 	
 }

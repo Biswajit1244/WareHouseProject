@@ -33,6 +33,7 @@ th {
 						<table class="table table-dark table-hover">
 							<thead>
 								<tr>
+									<th>ID</th>
 									<th>CODE</th>
 									<th>TYPE</th>
 									<th>DESCRIPTION</th>
@@ -42,14 +43,15 @@ th {
 							<tbody>
 								<c:forEach items="${list}" var="ob">
 									<tr>
+										<td>${ob.grnId}</td>
 										<td>${ob.grnCode }</td>
 										<td>${ob.grnType }</td>
 										<td>${ob.grnDesc }</td>
 										<td><a href="delete?gid=${ob.grnId}"><button
-												class="btn btn-danger">DELETE</button></a> <a
-										href="edit?gid=${ob.grnId}"><button
-												class="btn btn-success">EDIT</button></a> <a
-										href="view?gid=${ob.grnId}"><button class="btn btn-info">VIEW</button></a></td>
+												class="btn btn-danger">DELETE</button></a> 
+												<a href="edit?gid=${ob.grnId}"><button
+												class="btn btn-success">EDIT</button></a>
+											<a href="viewGrnDtls?id=${ob.grnId}" class="btn btn-info">VIEW PARTS</a> </td>
 									</tr>
 								</c:forEach>
 							</tbody>

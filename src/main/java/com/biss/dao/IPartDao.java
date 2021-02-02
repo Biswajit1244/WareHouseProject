@@ -11,4 +11,6 @@ public interface IPartDao {
 	
 	Part getOnePart(Integer id);
 	void updatePart(Part sp);
+	
+	List<Object[]> getPartIdAndCode();
 }

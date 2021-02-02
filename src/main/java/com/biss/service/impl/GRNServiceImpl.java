@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.biss.dao.IGRNDao;
 import com.biss.model.GRN;
+import com.biss.model.GrnDtls;
 import com.biss.service.IGRNService;
 @Service
 public class GRNServiceImpl implements IGRNService {
@@ -38,6 +39,23 @@ public class GRNServiceImpl implements IGRNService {
 	@Transactional
 	public void updateGRN(GRN sp) {
 		dao.updateGRN(sp);
+	}
+	@Override
+	@Transactional
+	public Integer saveGrnDtl(GrnDtls grnDtl) {
+		return dao.saveGrnDtl(grnDtl);
+	}
+	
+	@Override
+	@Transactional(readOnly = true)
+	public List<GrnDtls> getGrnDtlByGrnId(Integer grnId) {
+		return dao.getGrnDtlByGrnId(grnId);
+	}
+	
+	@Override
+	@Transactional
+	public void updateGrnDtlPartStatus(Integer grnDtl, String status) {
+		dao.updateGrnDtlPartStatus(grnDtl, status);
 	}
 
 }

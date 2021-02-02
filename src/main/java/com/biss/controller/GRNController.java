@@ -4,6 +4,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,7 +17,12 @@ import org.springframework.web.servlet.ModelAndView;
 import com.biss.excel.GRNExcelView;
 import com.biss.excel.GRNPdfView;
 import com.biss.model.GRN;
+import com.biss.model.GrnDtls;
+import com.biss.model.Purchase;
+import com.biss.model.PurchaseDtls;
 import com.biss.service.IGRNService;
+import com.biss.service.IPurchaseService;
+import com.biss.utils.CommonUtil;
 
 @Controller
 @RequestMapping("/grn")
@@ -24,11 +30,19 @@ public class GRNController {
 	@Autowired
 	private IGRNService ser;
 	
+	@Autowired
+	private IPurchaseService purSer;
 	
+	public void commonUi(Model m) {
+		List<Object[]> listOb=purSer.getPurIdAndCode();
+		Map<Integer,String> Map=CommonUtil.convert(listOb);
+		m.addAttribute("map",Map);
+	}
 	//1.Show Reg page
 	@RequestMapping("/register")
 	public String showRegPage(Model model) {
 		model.addAttribute("gRN",new GRN());
+		commonUi(model);
 	return "GRNRegPage";
 	}
 	//2.on click save Operation
@@ -36,8 +50,13 @@ public class GRNController {
 	public String saveOneGRN(@ModelAttribute GRN gRN,Model m) {
 		Integer id=ser.saveGRN(gRN);
 		String msg="GRN "+id+" Saved";
+		
+		convertPurDtlsTogrnDtls(gRN);	// One PoDtl-> oneGrnDtl
+		
+		purSer.updatePurchaseStatus(gRN.getPurOb().getPurId(),"RECIVED");
 		m.addAttribute("msg",msg);
 		m.addAttribute("gRN",new GRN());
+		commonUi(m);
 	return "GRNRegPage";
 	}
 	//3.show all data
@@ -63,6 +82,7 @@ public class GRNController {
 	public String showEditPage(@RequestParam("gid")Integer id,Model m) {
 		GRN GRN=ser.getOneGRN(id);
 		m.addAttribute("gRN",GRN);
+		commonUi(m);
 		return "GRNEditPage";
 	}
 	//6.on click update operation
@@ -116,4 +136,48 @@ public class GRNController {
 		}
 		return mv;
 	}
+	
+	/*############SCREEN-2##############*/
+	private void convertPurDtlsTogrnDtls(GRN grn) {
+		//Get Purchase Id from Grn
+		Integer purId=grn.getPurOb().getPurId();
+		//Get Purchase Object based on id
+		Purchase pur=purSer.getOnePurchase(purId);
+		//get all PurchaseDtls from purchase Object
+		List<PurchaseDtls> dtls=pur.getChilds();
+		
+		for(PurchaseDtls pd:dtls) {
+			GrnDtls gd=new GrnDtls();
+			gd.setBaseCost(pd.getPart().getPartBCost());
+			gd.setPartCode(pd.getPart().getPartCode());
+			gd.setPartStatus("NONE");
+			gd.setQnty(pd.getQty());
+			gd.setGrn(grn);
+			//Save GrnDtls
+			ser.saveGrnDtl(gd);
+		}
+	}
+	@RequestMapping("/viewGrnDtls")
+	public String showGrnParts(
+			@RequestParam("id")Integer id,
+			Model model
+			)
+	{
+		List<GrnDtls> grnDtls=ser.getGrnDtlByGrnId(id);
+		model.addAttribute("list", grnDtls);
+		return "GrnParts";
+	}
+	
+	@RequestMapping("/partStatus")
+	public String updateDtlPartStatus(
+			@RequestParam("id")Integer dtlId,
+			@RequestParam("status")String status,
+			@RequestParam("grnId")Integer grnId
+			) 
+	{
+		ser.updateGrnDtlPartStatus(dtlId, status);
+		
+		return "redirect:viewGrnDtls?id="+grnId;
+	}
+	
 }

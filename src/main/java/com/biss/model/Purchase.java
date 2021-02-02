@@ -1,11 +1,15 @@
 package com.biss.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -38,8 +42,12 @@ public class Purchase {
 	@JoinColumn(name="whIdFk")
 	private WhUserType whUserOb;
 	
+	@OneToMany(mappedBy = "pur",fetch = FetchType.EAGER)
+	private List<PurchaseDtls> childs;
+	
 	@Column(name="description")
 	private String purDesc;
+	
 	public Purchase() {
 		super();
 	}
@@ -56,6 +64,12 @@ public class Purchase {
 	}
 	public String getPurCode() {
 		return purCode;
+	}
+	public List<PurchaseDtls> getChilds() {
+		return childs;
+	}
+	public void setChilds(List<PurchaseDtls> childs) {
+		this.childs = childs;
 	}
 	public void setPurCode(String purCode) {
 		this.purCode = purCode;
